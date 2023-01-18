@@ -86,3 +86,8 @@ visible = false
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168831, 0 )
 shape = SubResource( 1 )
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]

@@ -11,6 +11,9 @@ onready var player_animator = get_node("Pivot/KidAnims/AnimationPlayer");
 onready var player_anim_tree = get_node("Pivot/KidAnims/AnimationTree");
 onready var player_states = player_anim_tree["parameters/playback"];
 
+onready var dash_timer = $"DashTimer";
+var is_dashing:bool = false;
+
 func _ready():
 	player_animator.get_animation("Idle").set_loop(true);
 
@@ -35,6 +38,12 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("light"):
 		player_states.travel("Throw");
+	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0:
+		speed = 28;
+		dash_timer.start();
+		is_dashing = true
+		player_states.travel("Dash");
+		player_animator.set("speed",4);
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
@@ -47,3 +56,9 @@ func _process(delta):
 		player_states.travel("Walk");
 	else:
 		player_states.travel("Idle");
+
+
+func _on_DashTimer_timeout():
+	speed = 14;
+	is_dashing = false;
+	pass # Replace with function body.
