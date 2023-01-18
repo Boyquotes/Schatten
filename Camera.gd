@@ -12,6 +12,13 @@ extends Camera
 func _physics_process(_delta):
 	var position = get_viewport().get_mouse_position()
 	# if ev is InputEventMouseButton and ev.pressed and ev.button_index == 1:
+	
+	# The code below first moves the initial point of the ray in the 2D plane to the mouse position
+	# and then casts the ray straight down. This is accurate for a camera in the
+	# orthogonal projection, but not correct for a camera in the perspective projection.
+	# But for the purposes of this code, this detail doesn't matter.
+	# (Since we are only concerned with the direction.)
+	
 	var camera = get_node(".")
 	var from = camera.project_ray_origin(position)
 	var to = from + camera.project_ray_normal(position) * 200
