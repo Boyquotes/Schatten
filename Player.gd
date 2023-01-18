@@ -2,6 +2,7 @@ extends KinematicBody
 
 # How fast the player moves in meters per second.
 export var speed = 14
+export var dash = 25
 # The downward acceleration when in the air, in meters per second squared.
 export var fall_acceleration = 75
 
@@ -13,6 +14,9 @@ onready var player_states = player_anim_tree["parameters/playback"];
 
 onready var dash_timer = $"DashTimer";
 var is_dashing:bool = false;
+
+onready var particles = $"CPUParticles";
+onready var particles2 = $"CPUParticles2";
 
 func _ready():
 	player_animator.get_animation("Idle").set_loop(true);
@@ -39,11 +43,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("light"):
 		player_states.travel("Throw");
 	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0:
-		speed = 28;
+		speed = dash;
 		dash_timer.start();
 		is_dashing = true
 		player_states.travel("Dash");
 		player_animator.set("speed",4);
+		particles.set("emitting", true);
+		particles2.set("emitting", true);
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
@@ -60,5 +66,7 @@ func _process(delta):
 
 func _on_DashTimer_timeout():
 	speed = 14;
+	particles.set("emitting", false);
+	particles2.set("emitting", false);
 	is_dashing = false;
 	pass # Replace with function body.
