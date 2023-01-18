@@ -8,8 +8,8 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 
-onready var player_animator = get_node("Pivot/KidAnims/AnimationPlayer");
-onready var player_anim_tree = get_node("Pivot/KidAnims/AnimationTree");
+onready var player_animator = get_node("Pivot/KidActions/AnimationPlayer");
+onready var player_anim_tree = get_node("Pivot/KidActions/AnimationTree");
 onready var player_states = player_anim_tree["parameters/playback"];
 
 onready var dash_timer = $"DashTimer";

@@ -43,7 +43,7 @@ omni_range = 32.428
 script = ExtResource( 5 )
 
 [node name="BearFinal" parent="OmniLight" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104861, 0 )
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.104861, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203664, -1.69852, 0.0226693 )

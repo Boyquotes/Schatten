@@ -79,18 +79,15 @@ graph_offset = Vector2( -928.968, -190.838 )
 
 [node name="KidAnims" instance=ExtResource( 2 )]
 
-[node name="Skeleton" parent="Armature" index="0"]
-bones/12/bound_children = [ NodePath("BoneAttachment") ]
-
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( 0.00725784, 0.0879077, -0.996102, -0.998029, -0.0614635, -0.0126961, -0.0623401, 0.99423, 0.0872883, -0.35681, 0.0346021, 0.651662 )
+transform = Transform( 0.014429, 0.155221, -0.987774, -0.999675, 0.0230092, -0.0109871, 0.0210226, 0.987612, 0.155502, -0.313038, 0.0599411, 0.706618 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
 transform = Transform( 0.903364, 0.223376, -0.366107, -0.314442, 0.925482, -0.211208, 0.291647, 0.305918, 0.906286, 0.105307, -0.104972, 0.164482 )
 
 [node name="Sword" parent="Armature/Skeleton/BoneAttachment/Spatial" index="0" instance=ExtResource( 1 )]
-transform = Transform( -1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, -0.198431, 0.581185, -0.130917 )
+transform = Transform( -0.00324006, -0.0423988, 0.262299, 0.0101284, 0.386696, -0.0396192, -0.250824, -0.0111076, 0.00312872, -0.264941, 0.797112, -0.149151 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource( 1 )
