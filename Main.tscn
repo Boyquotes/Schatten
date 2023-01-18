@@ -4,18 +4,15 @@
 [ext_resource path="res://art/Bear/Bear.tscn" type="PackedScene" id=2]
 [ext_resource path="res://art/Bedroom/woodplanks.material" type="Material" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
-<<<<<<< Updated upstream
 [ext_resource path="res://art/Dude/Test.gltf" type="PackedScene" id=5]
 [ext_resource path="res://art/Bedroom/Bookcase.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://art/Bedroom/Bedroom assets.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://art/Bedroom/Wood2.png" type="Texture" id=8]
 [ext_resource path="res://art/Bedroom/WoodShelf.material" type="Material" id=9]
 [ext_resource path="res://art/Bedroom/Carpet inside.png" type="Texture" id=10]
-=======
 [ext_resource path="res://art/Test.gltf" type="PackedScene" id=5]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Main.gd" type="Script" id=7]
->>>>>>> Stashed changes
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 1, 30 )
