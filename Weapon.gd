@@ -1,5 +1,4 @@
-extends KinematicBody
-
+extends Spatial
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,10 +17,11 @@ enum State {STATE_IDLE, STATE_SWINGING}
 var state = State.STATE_IDLE
 
 func _ready():
+	print('start weapon')
 	lightsource = $"../../../OmniLight"
-	player = $"../../../Player"
-	swordPivot = $"./Position3D/Sword Pivot"
-	swordTip = $"./Position3D/Sword Pivot/SwordTip"
+	player = $"../../../../../../Player"
+	swordPivot = $"./SwordBase"
+	swordTip = $"./SwordTip"
 	space_state = get_world().direct_space_state
 	state = State.STATE_IDLE
 	
@@ -77,3 +77,7 @@ func line(pos1: Vector3, pos2: Vector3, color = Color.white):
 	immediate_geometry.set_color(color)
 	immediate_geometry.add_vertex(pos2)
 	immediate_geometry.end()	
+
+
+func _on_Area_area_entered(area):
+	print('hi')

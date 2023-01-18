@@ -30,7 +30,7 @@ flip_v = true
 pixel_size = 0.005
 axis = 1
 frames = SubResource( 1 )
-frame = 6
+frame = 4
 playing = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Pivot"]
