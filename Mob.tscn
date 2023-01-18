@@ -1,0 +1,42 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://art/Snake/7.png" type="Texture" id=1]
+[ext_resource path="res://art/Snake/5.png" type="Texture" id=2]
+[ext_resource path="res://art/Snake/2.png" type="Texture" id=3]
+[ext_resource path="res://art/Snake/3.png" type="Texture" id=4]
+[ext_resource path="res://art/Snake/6.png" type="Texture" id=5]
+[ext_resource path="res://art/Snake/1.png" type="Texture" id=6]
+[ext_resource path="res://art/Snake/4.png" type="Texture" id=7]
+[ext_resource path="res://Mob.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="Mob" type="KinematicBody"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3353, 0 )
+script = ExtResource( 8 )
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="Character" type="AnimatedSprite3D" parent="Pivot"]
+flip_v = true
+pixel_size = 0.005
+axis = 1
+frames = SubResource( 1 )
+frame = 2
+playing = true
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.292973, 0, 0.524743 )
+aabb = AABB( -1.36629, -1, -5.46379, 2.73258, 2, 10.9276 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 0.54, 0, 0, 0, 0.01, 0, 0, 0, 5.3, 0, 0, 0.707502 )
+shape = SubResource( 2 )
