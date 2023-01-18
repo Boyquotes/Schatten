@@ -80,7 +80,7 @@ graph_offset = Vector2( -928.968, -190.838 )
 [node name="KidAnims" instance=ExtResource( 2 )]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( 0.014429, 0.155221, -0.987774, -0.999675, 0.0230092, -0.0109871, 0.0210226, 0.987612, 0.155502, -0.313038, 0.0599411, 0.706618 )
+transform = Transform( -1.79135e-07, -1, -5.71167e-08, -0.999989, 1.49849e-07, -0.0046109, 0.00461087, 1.01015e-07, -0.99999, -1.23967, 0.397193, 1.26716e-07 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
