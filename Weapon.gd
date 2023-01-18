@@ -77,6 +77,3 @@ func line(pos1: Vector3, pos2: Vector3, color = Color.white):
 	immediate_geometry.set_color(color)
 	immediate_geometry.add_vertex(pos2)
 	immediate_geometry.end()	
-	
-	
-		

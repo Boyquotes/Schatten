@@ -7,6 +7,13 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 
+onready var player_animator = get_node("Pivot/KidActions/AnimationPlayer");
+onready var player_anim_tree = get_node("Pivot/KidActions/AnimationTree");
+onready var player_states = player_anim_tree["parameters/playback"];
+
+func _ready():
+	player_animator.get_animation("Idle").set_loop(true);
+
 func _physics_process(delta):
 	movePlayer(delta);
 	
@@ -26,6 +33,10 @@ func movePlayer(delta):
 	if Input.is_action_pressed("move_up"):
 		direction.z -= 1
 	
+	if Input.is_action_pressed("attack"):
+		player_states.travel("SideSwing");
+	
+	
 	# Make the player look at the direction they are moving at:
 	# if direction != Vector3.ZERO:
 		# direction = direction.normalized()
@@ -35,3 +46,10 @@ func movePlayer(delta):
 	velocity.z = direction.z * speed
 	velocity.y -= fall_acceleration * delta
 	velocity = move_and_slide(velocity, Vector3.UP)
+
+#
+func _process(delta):
+	if velocity.length() >= 1:
+		player_states.travel("Walk");
+	else:
+		player_states.travel("Idle");
