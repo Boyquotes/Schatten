@@ -15,6 +15,9 @@ func _ready():
 	player_animator.get_animation("Idle").set_loop(true);
 
 func _physics_process(delta):
+	movePlayer(delta);
+	
+func movePlayer(delta):
 	# We create a local variable to store the input direction.
 	var direction = Vector3.ZERO
 
