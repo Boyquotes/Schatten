@@ -30,7 +30,7 @@ mesh = SubResource( 2 )
 material/0 = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.693, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1407, 0 )
 light_energy = 2.116
 shadow_enabled = true
 shadow_bias = 1.2
@@ -41,7 +41,7 @@ script = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104861, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.76, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203664, -1.69852, 0.0226693 )
 
 [node name="CameraPivot" type="Position3D" parent="."]
 

@@ -7,8 +7,8 @@ export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 
-onready var player_animator = get_node("Pivot/KidActions/AnimationPlayer");
-onready var player_anim_tree = get_node("Pivot/KidActions/AnimationTree");
+onready var player_animator = get_node("Pivot/KidAnims/AnimationPlayer");
+onready var player_anim_tree = get_node("Pivot/KidAnims/AnimationTree");
 onready var player_states = player_anim_tree["parameters/playback"];
 
 func _ready():
@@ -31,13 +31,10 @@ func _physics_process(delta):
 		direction.z -= 1
 	
 	if Input.is_action_pressed("attack"):
-		player_states.travel("SideSwing");
+		player_states.travel("SwordSwing");
 	
-	
-	# Make the player look at the direction they are moving at:
-	# if direction != Vector3.ZERO:
-		# direction = direction.normalized()
-		# $Pivot.look_at(translation + direction, Vector3.UP)
+	if Input.is_action_just_pressed("light"):
+		player_states.travel("Throw");
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
