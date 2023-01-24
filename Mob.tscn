@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://art/Snake/7.png" type="Texture" id=1]
 [ext_resource path="res://art/Snake/5.png" type="Texture" id=2]
@@ -8,9 +8,19 @@
 [ext_resource path="res://art/Snake/1.png" type="Texture" id=6]
 [ext_resource path="res://art/Snake/4.png" type="Texture" id=7]
 [ext_resource path="res://Mob.gd" type="Script" id=8]
+[ext_resource path="res://art/Snake Shadow/22449BC5-EC01-40EF-BB67-70C51ABB8240.png" type="Texture" id=9]
+[ext_resource path="res://art/Snake Shadow/E4BA98F1-9379-448F-B4C1-9C777FF45885 - Copy.png" type="Texture" id=10]
+[ext_resource path="res://art/Snake Shadow/306594D9-8423-41AE-9CB8-6C7D2BBC4A23.png" type="Texture" id=11]
+[ext_resource path="res://art/Snake Shadow/36B13B64-551B-4148-840F-DB8FC5E78936 - Copy.png" type="Texture" id=12]
+[ext_resource path="res://art/Snake Shadow/22449BC5-EC01-40EF-BB67-70C51ABB8240 - Copy.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 1 ) ],
 "loop": true,
 "name": "default",
@@ -32,6 +42,8 @@ flip_v = true
 pixel_size = 0.005
 axis = 1
 frames = SubResource( 1 )
+animation = "New Anim"
+frame = 4
 playing = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Pivot"]
