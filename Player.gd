@@ -6,6 +6,10 @@ export var dash = 25
 # The downward acceleration when in the air, in meters per second squared.
 export var fall_acceleration = 75
 
+signal health_changed
+
+var health = 100
+
 var velocity = Vector3.ZERO
 
 onready var player_animator = get_node("Pivot/KidActions/AnimationPlayer");
@@ -72,4 +76,15 @@ func _on_DashTimer_timeout():
 	particles.set("emitting", false);
 	particles2.set("emitting", false);
 	is_dashing = false;
-	pass # Replace with function body.
+
+
+func _on_Area_body_entered(body):
+	if body.damage:
+		health -= body.damage
+		if (health <= 0):
+			health = 0
+			emit_signal("health_changed", 0)
+			print("you ded")
+		else:
+			emit_signal("health_changed", health)
+		body.queue_free()
