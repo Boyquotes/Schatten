@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://art/Snake/7.png" type="Texture" id=1]
 [ext_resource path="res://art/Snake/5.png" type="Texture" id=2]
@@ -27,6 +27,8 @@ animations = [ {
 "speed": 7.0
 } ]
 
+[sub_resource type="BoxShape" id=2]
+
 [node name="Mob" type="KinematicBody"]
 transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3353, 0 )
 collision_layer = 2
@@ -47,3 +49,7 @@ playing = true
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.292973, 0, 0.524743 )
 aabb = AABB( -1.36629, -1, -5.46379, 2.73258, 2, 10.9276 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 0.54, 0, 0, 0, 0.01, 0, 0, 0, 5.3, 0, 0, 0.707502 )
+shape = SubResource( 2 )
