@@ -1,4 +1,5 @@
 extends KinematicBody
+onready var player := get_node("/root/Main/Player")
 
 # Minimum speed of the mob in meters per second.
 export var min_speed = 10
@@ -8,11 +9,15 @@ export var max_speed = 18
 var velocity = Vector3.ZERO
 
 func _physics_process(_delta):
-	move_and_slide(velocity)
+	
+	#var dir = (player.global_transform.origin - self.global_transform.origin).normalized()
+	#move_and_slide(dir*velocity*1.5)
+	look_at(player.global_transform.origin, Vector3.UP)
+	var dir = (player.global_transform.origin - self.global_transform.origin).normalized()
+	move_and_collide(dir * velocity * _delta)
 
 func initialize(start_position, player_position):
 	look_at_from_position(start_position, player_position, Vector3.UP)
-	rotate_y(rand_range(-PI / 4, PI / 4))
 
 	var random_speed = rand_range(min_speed, max_speed)
 	velocity = Vector3.FORWARD * random_speed

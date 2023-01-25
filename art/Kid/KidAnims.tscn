@@ -1,0 +1,96 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://art/Sword/SwordFinal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://art/Kid/Anims/KidAnims.glb" type="PackedScene" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Dash"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "SideSwing"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Throw"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=1]
+states/Dash/node = SubResource( 3 )
+states/Dash/position = Vector2( -145, 196.556 )
+states/Idle/node = SubResource( 4 )
+states/Idle/position = Vector2( 97.6667, -119 )
+states/SwordSwing/node = SubResource( 5 )
+states/SwordSwing/position = Vector2( -581.667, -77 )
+states/Throw/node = SubResource( 6 )
+states/Throw/position = Vector2( 499, 44.1111 )
+states/Walk/node = SubResource( 7 )
+states/Walk/position = Vector2( 343.667, 195.667 )
+transitions = [ "Idle", "SwordSwing", SubResource( 8 ), "SwordSwing", "Idle", SubResource( 9 ), "SwordSwing", "Throw", SubResource( 10 ), "Throw", "SwordSwing", SubResource( 11 ), "Walk", "SwordSwing", SubResource( 12 ), "SwordSwing", "Walk", SubResource( 13 ), "Dash", "SwordSwing", SubResource( 14 ), "Idle", "Walk", SubResource( 16 ), "Walk", "Idle", SubResource( 17 ), "Walk", "Dash", SubResource( 18 ), "Dash", "Walk", SubResource( 19 ), "Dash", "Idle", SubResource( 20 ), "Idle", "Throw", SubResource( 22 ), "Throw", "Idle", SubResource( 23 ), "Dash", "Throw", SubResource( 24 ), "Walk", "Throw", SubResource( 26 ), "Throw", "Walk", SubResource( 27 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -928.968, -190.838 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[node name="KidAnims" instance=ExtResource( 2 )]
+
+[node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
+transform = Transform( -1.79135e-07, -1, -5.71167e-08, -0.999989, 1.49849e-07, -0.0046109, 0.00461087, 1.01015e-07, -0.99999, -1.23967, 0.397193, 1.26716e-07 )
+bone_name = "hand_r"
+
+[node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
+transform = Transform( 0.903364, 0.223376, -0.366107, -0.314442, 0.925482, -0.211208, 0.291647, 0.305918, 0.906286, 0.105307, -0.104972, 0.164482 )
+
+[node name="Sword" parent="Armature/Skeleton/BoneAttachment/Spatial" index="0" instance=ExtResource( 1 )]
+transform = Transform( -0.00324006, -0.0423988, 0.262299, 0.0101284, 0.386696, -0.0396192, -0.250824, -0.0111076, 0.00312872, -0.264941, 0.797112, -0.149151 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 1 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 2 )

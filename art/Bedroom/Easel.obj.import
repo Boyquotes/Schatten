@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Easel.obj-55c202166837e43b83c33d6f371af04a.mesh"
+
+[deps]
+
+files=[ "res://.import/Easel.obj-55c202166837e43b83c33d6f371af04a.mesh" ]
+
+source_file="res://art/Bedroom/Easel.obj"
+dest_files=[ "res://.import/Easel.obj-55c202166837e43b83c33d6f371af04a.mesh", "res://.import/Easel.obj-55c202166837e43b83c33d6f371af04a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
