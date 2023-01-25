@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://art/Kid/KidAnims.tscn" type="PackedScene" id=3]
@@ -15,10 +15,12 @@ emission_on_uv2 = false
 
 [sub_resource type="PlaneMesh" id=3]
 
+[sub_resource type="CapsuleShape" id=4]
+radius = 1.70018
+height = 2.97399
+
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 2 )
-speed = null
-fall_acceleration = null
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -62,4 +64,13 @@ scale_amount = 0.0
 scale_amount_random = 0.23
 color = Color( 0.956863, 0, 0, 1 )
 
+[node name="Area" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.848, 0 )
+shape = SubResource( 4 )
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

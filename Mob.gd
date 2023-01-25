@@ -6,6 +6,8 @@ export var min_speed = 10
 # Maximum speed of the mob in meters per second.
 export var max_speed = 18
 
+var damage = 10
+
 var velocity = Vector3.ZERO
 
 func _physics_process(_delta):
