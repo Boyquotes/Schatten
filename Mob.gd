@@ -30,5 +30,5 @@ func _on_VisibilityNotifier_screen_exited():
 	queue_free()
 	
 func take_damage():
-
+	print("I took damage!");
 	queue_free()

@@ -16,6 +16,8 @@ onready var player_animator = get_node("Pivot/KidActions/AnimationPlayer");
 onready var player_anim_tree = get_node("Pivot/KidActions/AnimationTree");
 onready var player_states = player_anim_tree["parameters/playback"];
 
+onready var light = $"../OmniLight";
+
 onready var dash_timer = $"DashTimer";
 var is_dashing:bool = false;
 
@@ -47,7 +49,7 @@ func movePlayer(delta):
 	if Input.is_action_pressed("attack"):
 		player_states.travel("SwordSwing");
 	
-	if Input.is_action_just_pressed("light"):
+	if Input.is_action_just_pressed("light") && !light.to_hand:
 		player_states.travel("Throw");
 	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0:
 		speed = dash;
