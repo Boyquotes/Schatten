@@ -3,32 +3,27 @@ extends Spatial
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var lightsource
-var swordPivot
-var swordTip
-var player
-var space_state
+
 
 var immediate_geometry
 
 var enemiesHit = []
 enum State {STATE_IDLE, STATE_SWINGING}
 
-var state = State.STATE_IDLE
-var areaColl
-var area
-var swing_duration = 1
+onready var lightsource = $"../../../../../../../../OmniLight"
+onready var swordPivot = $"./SwordBase"
+onready var swordTip = $"./SwordTip"
+onready var player = $"../../../../../../../../Player"
+onready var space_state = get_world().direct_space_state
+onready var areaColl = $"Area/Area@CollisionShape"
+onready var area = $"Area"
+onready var swing_duration = $"../../../../../../../../Player/Pivot/KidActions/AnimationPlayer".get_animation("SwordSwing").length
+
 var timer
+var state = State.STATE_IDLE
 
 func _ready():
-	lightsource = $"../../../../../../../../OmniLight"
-	player = $"../../../../../../../../Player"
-	swordPivot = $"./SwordBase"
-	swordTip = $"./SwordTip"
-	space_state = get_world().direct_space_state
 	state = State.STATE_IDLE
-	areaColl = $"Area/Area@CollisionShape"
-	area = $"Area"
 	timer = Timer.new()
 	add_child(timer)
 	
@@ -41,7 +36,7 @@ func _process(delta):
 		# when first starting to attack, empty hit array
 		enemiesHit = []
 		state = State.STATE_SWINGING	
-		
+
 		#start timer to change state back to idle
 		timer.connect("timeout",self,"_on_swing_end")
 		timer.wait_time = swing_duration

@@ -31,6 +31,7 @@ animations = [ {
 
 [node name="Mob" type="KinematicBody"]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource( 8 )
 
 [node name="Pivot" type="Spatial" parent="."]
@@ -41,7 +42,7 @@ pixel_size = 0.005
 axis = 1
 frames = SubResource( 1 )
 animation = "New Anim"
-frame = 5
+frame = 2
 playing = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Pivot"]
