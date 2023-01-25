@@ -146,7 +146,7 @@ curve = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0152, 0, -19.9907 )
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.0
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

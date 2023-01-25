@@ -30,7 +30,6 @@ animations = [ {
 [sub_resource type="BoxShape" id=2]
 
 [node name="Mob" type="KinematicBody"]
-transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3353, 0 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 8 )
@@ -43,7 +42,7 @@ pixel_size = 0.005
 axis = 1
 frames = SubResource( 1 )
 animation = "New Anim"
-frame = 5
+frame = 2
 playing = true
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Pivot"]
