@@ -22,8 +22,9 @@ func initialize(start_position, player_position):
 	look_at_from_position(start_position, player_position, Vector3.UP)
 
 	var random_speed = rand_range(min_speed, max_speed)
-	velocity = Vector3.FORWARD * random_speed
-	velocity = velocity.rotated(Vector3.UP, rotation.y)
+	velocity = random_speed
+	# velocity = Vector3.FORWARD * random_speed
+	# velocity = velocity.rotated(Vector3.UP, rotation.y)
 
 
 func _on_VisibilityNotifier_screen_exited():
