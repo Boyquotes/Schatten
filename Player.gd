@@ -20,6 +20,7 @@ onready var light = $"../OmniLight";
 
 onready var dash_timer = $"DashTimer";
 var is_dashing:bool = false;
+var can_damage:bool = true;
 
 onready var particles = $"CPUParticles";
 onready var particles2 = $"CPUParticles2";
@@ -53,6 +54,7 @@ func movePlayer(delta):
 		player_states.travel("Throw");
 	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0:
 		speed = dash;
+		can_damage = false;
 		dash_timer.start();
 		is_dashing = true
 		player_states.travel("Dash");
@@ -75,13 +77,14 @@ func _process(delta):
 
 func _on_DashTimer_timeout():
 	speed = 14;
+	can_damage = true;
 	particles.set("emitting", false);
 	particles2.set("emitting", false);
 	is_dashing = false;
 
 
 func _on_Area_body_entered(body):
-	if body.damage:
+	if body.damage && can_damage:
 		health -= body.damage
 		if (health <= 0):
 			health = 0
