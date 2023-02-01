@@ -92,4 +92,4 @@ func _on_Area_body_entered(body):
 			print("you ded")
 		else:
 			emit_signal("health_changed", health)
-		# body.queue_free()
+		body.queue_free()
