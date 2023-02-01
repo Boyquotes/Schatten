@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://art/Sword/SwordFinal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/Kid/Anims/KidAnims.glb" type="PackedScene" id=2]
+[ext_resource path="res://art/Kid/KidShader.material" type="Material" id=3]
 
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Dash"
@@ -79,8 +80,35 @@ graph_offset = Vector2( -460.968, -46.1136 )
 
 [node name="KidAnims" instance=ExtResource( 2 )]
 
+[node name="Band_low" parent="Armature/Skeleton" index="0"]
+material/0 = ExtResource( 3 )
+
+[node name="Cape_low" parent="Armature/Skeleton" index="1"]
+material/0 = ExtResource( 3 )
+
+[node name="Center_low" parent="Armature/Skeleton" index="2"]
+material/0 = ExtResource( 3 )
+
+[node name="Hair_low" parent="Armature/Skeleton" index="3"]
+material/0 = ExtResource( 3 )
+
+[node name="Hat_low" parent="Armature/Skeleton" index="4"]
+material/0 = ExtResource( 3 )
+
+[node name="Head_low" parent="Armature/Skeleton" index="5"]
+material/0 = ExtResource( 3 )
+
+[node name="Knot_low" parent="Armature/Skeleton" index="6"]
+material/0 = ExtResource( 3 )
+
+[node name="Shirt_low" parent="Armature/Skeleton" index="7"]
+material/0 = ExtResource( 3 )
+
+[node name="Socks_low" parent="Armature/Skeleton" index="8"]
+material/0 = ExtResource( 3 )
+
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( 0.00698078, 0.0819701, -0.99661, -0.997549, -0.0688254, -0.0126482, -0.0696289, 0.994255, 0.0812888, -0.360564, 0.032493, 0.646509 )
+transform = Transform( 0.00918648, 0.114373, -0.993395, -0.999516, -0.0284885, -0.012523, -0.0297327, 0.993029, 0.114056, -0.339868, 0.0442481, 0.674022 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
@@ -90,7 +118,7 @@ transform = Transform( 0.854551, 0.34017, -0.392459, -0.457104, 0.851358, -0.257
 transform = Transform( -0.00247751, -0.0337222, 0.264144, 0.0127956, 0.421088, 0.0212327, -0.250661, 0.0218287, -0.0015269, 0.082, 0.356, -0.046 )
 
 [node name="LeftHand" type="BoneAttachment" parent="Armature/Skeleton" index="10"]
-transform = Transform( -0.00685188, 0.0392441, -0.999206, -0.751734, -0.659139, -0.0207333, -0.659429, 0.750996, 0.0340176, 0.454962, -0.267438, 0.428017 )
+transform = Transform( -0.0299623, 0.0258272, -0.999217, -0.712631, -0.70153, 0.00323578, -0.700898, 0.712171, 0.039425, 0.454802, -0.297748, 0.433578 )
 bone_name = "hand_l"
 
 [node name="SpotLight" type="SpotLight" parent="Armature/Skeleton/LeftHand" index="0"]

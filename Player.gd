@@ -15,6 +15,8 @@ var velocity = Vector3.ZERO
 onready var player_animator = get_node("Pivot/KidActions/AnimationPlayer");
 onready var player_anim_tree = get_node("Pivot/KidActions/AnimationTree");
 onready var player_states = player_anim_tree["parameters/playback"];
+onready var mat = $"Pivot/KidActions/Armature/Skeleton/Band_low".get("material/0")
+onready var DmgTween = $"DamageTween";
 
 onready var light = $"../OmniLight";
 
@@ -27,6 +29,9 @@ onready var particles2 = $"CPUParticles2";
 
 func _ready():
 	player_animator.get_animation("Idle").set_loop(true);
+	print(mat)
+	mat.set("shader_param/transparency",1.0);
+	mat.set("shader_param/tint", 1.0);
 
 func _physics_process(delta):
 	movePlayer(delta);
@@ -85,6 +90,9 @@ func _on_DashTimer_timeout():
 
 func _on_Area_body_entered(body):
 	if body.damage && can_damage:
+		mat.set("shader_param/tint", 3.0);
+		DmgTween.interpolate_property(mat,"shader_param/transparency",1.0,0.0,.5,Tween.TRANS_BOUNCE,Tween.EASE_OUT);
+		DmgTween.start();
 		health -= body.damage
 		if (health <= 0):
 			health = 0
@@ -93,3 +101,9 @@ func _on_Area_body_entered(body):
 		else:
 			emit_signal("health_changed", health)
 		body.queue_free()
+
+
+
+func _on_DamageTween_tween_completed(object, key):
+	mat.set("shader_param/tint", 1.0);
+	mat.set("shader_param/transparency",1.00);
