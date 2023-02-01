@@ -2,9 +2,9 @@ extends KinematicBody
 onready var player := get_node("/root/Main/Player")
 
 # Minimum speed of the mob in meters per second.
-export var min_speed = 8
+export var min_speed = 4
 # Maximum speed of the mob in meters per second.
-export var max_speed = 15
+export var max_speed = 7
 
 var damage = 10
 
