@@ -52,21 +52,19 @@ func detect_enemy():
 	# cast ray from pivot to ground
 	var pivot_to = swordPivot.get_global_translation() + (swordPivot.get_global_translation() - lightsource.get_global_translation()).normalized() * 50
 	var pivot_ray = space_state.intersect_ray(lightsource.get_global_translation(), pivot_to,[player])
-	assert(pivot_ray != null) #make sure it hit the ground
-	#get position for where the ray hits the ground
-	var pivot_shadow_pos = pivot_ray.position 
-	
 	
 	# cast ray from swordTip to ground
 	var tip_to = swordTip.get_global_translation() + (swordTip.get_global_translation() - lightsource.get_global_translation()).normalized() * 50
 	var tip_ray = space_state.intersect_ray(lightsource.get_global_translation(), tip_to,[player])
-	assert(tip_ray != null)
-	var tip_shadow_pos = tip_ray.position
 	
-	# connect the two points of intersection on the ground as a line,
-	# then do a raycast between the line during the swing animation
-	
-	set_sword_area_position(pivot_shadow_pos,tip_shadow_pos)
+	if tip_ray and tip_ray.position != null and pivot_ray and pivot_ray.position != null:
+		#get position for where the ray hits the ground
+		var pivot_shadow_pos = pivot_ray.position 
+		
+		var tip_shadow_pos = tip_ray.position
+		# connect the two points of intersection on the ground as a line,
+		# then do a raycast between the line during the swing animation
+		set_sword_area_position(pivot_shadow_pos,tip_shadow_pos)
 	
 	#debug lines
 	#var zOffset = Vector3(0,0,0)
