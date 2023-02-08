@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://art/GUI/Health.gdshader" type="Shader" id=1]
+[ext_resource path="res://art/GUI/HealthBar1.png" type="Texture" id=2]
+[ext_resource path="res://art/GUI/HealthBar2.png" type="Texture" id=3]
+[ext_resource path="res://art/GUI/HealthBar.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = ExtResource( 1 )
+shader_param/fac = 1.0
+shader_param/mask = ExtResource( 3 )
+shader_param/tex = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect"]
+material = SubResource( 18 )
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 1489.0
+margin_bottom = 146.0
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]

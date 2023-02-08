@@ -15,7 +15,7 @@ void fragment()
 		vec4 Col = vec4(0,0,0,0);
 		if (texture(mask,UV).a != 0.0)
 		{
-			Col = texture(tex, newUV * vec2(.95,.8)).rgba;
+			Col = texture(tex, newUV * vec2(.95,1.0)).rgba;
 		// 
 		}
 		else
