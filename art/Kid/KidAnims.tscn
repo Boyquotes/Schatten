@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://art/Sword/SwordFinal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/Kid/Anims/KidAnims.glb" type="PackedScene" id=2]
@@ -13,8 +13,19 @@ animation = "Idle"
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "SideSwing"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=29]
 animation = "Throw"
+
+[sub_resource type="AnimationNodeTimeScale" id=30]
+
+[sub_resource type="AnimationNodeBlendTree" id=28]
+graph_offset = Vector2( -274, 96.8228 )
+nodes/Throw/node = SubResource( 29 )
+nodes/Throw/position = Vector2( 80.1195, 118.368 )
+nodes/TimeScale/node = SubResource( 30 )
+nodes/TimeScale/position = Vector2( 93.3333, 253.333 )
+nodes/output/position = Vector2( 426.667, 120 )
+node_connections = [ "TimeScale", 0, "Throw", "output", 0, "TimeScale" ]
 
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Walk"
@@ -23,11 +34,6 @@ animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=9]
 switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
@@ -48,17 +54,26 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=1]
@@ -67,14 +82,14 @@ states/Dash/position = Vector2( -145, 196.556 )
 states/Idle/node = SubResource( 4 )
 states/Idle/position = Vector2( 97.6667, -119 )
 states/SwordSwing/node = SubResource( 5 )
-states/SwordSwing/position = Vector2( -581.667, -77 )
-states/Throw/node = SubResource( 6 )
-states/Throw/position = Vector2( 499, 44.1111 )
+states/SwordSwing/position = Vector2( -302.334, -38.3333 )
+states/Throw/node = SubResource( 28 )
+states/Throw/position = Vector2( 538.032, -54.7803 )
 states/Walk/node = SubResource( 7 )
 states/Walk/position = Vector2( 343.667, 195.667 )
-transitions = [ "Idle", "SwordSwing", SubResource( 8 ), "SwordSwing", "Idle", SubResource( 9 ), "SwordSwing", "Throw", SubResource( 10 ), "Throw", "SwordSwing", SubResource( 11 ), "Walk", "SwordSwing", SubResource( 12 ), "SwordSwing", "Walk", SubResource( 13 ), "Dash", "SwordSwing", SubResource( 14 ), "Idle", "Walk", SubResource( 16 ), "Walk", "Idle", SubResource( 17 ), "Walk", "Dash", SubResource( 18 ), "Dash", "Walk", SubResource( 19 ), "Dash", "Idle", SubResource( 20 ), "Idle", "Throw", SubResource( 22 ), "Throw", "Idle", SubResource( 23 ), "Dash", "Throw", SubResource( 24 ), "Walk", "Throw", SubResource( 26 ), "Throw", "Walk", SubResource( 27 ) ]
+transitions = [ "Idle", "SwordSwing", SubResource( 8 ), "SwordSwing", "Idle", SubResource( 9 ), "Walk", "SwordSwing", SubResource( 12 ), "SwordSwing", "Walk", SubResource( 13 ), "Dash", "SwordSwing", SubResource( 14 ), "Idle", "Walk", SubResource( 16 ), "Walk", "Idle", SubResource( 17 ), "Walk", "Dash", SubResource( 18 ), "Dash", "Walk", SubResource( 19 ), "Dash", "Idle", SubResource( 20 ), "Idle", "Throw", SubResource( 31 ), "Throw", "Idle", SubResource( 32 ), "SwordSwing", "Throw", SubResource( 33 ), "Throw", "SwordSwing", SubResource( 34 ), "Throw", "Walk", SubResource( 35 ), "Walk", "Throw", SubResource( 36 ), "Dash", "Throw", SubResource( 37 ), "Throw", "Dash", SubResource( 38 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -460.968, -46.1136 )
+graph_offset = Vector2( -289.968, -157.114 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=2]
 
@@ -108,7 +123,7 @@ material/0 = ExtResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( 0.00918648, 0.114373, -0.993395, -0.999516, -0.0284885, -0.012523, -0.0297327, 0.993029, 0.114056, -0.339868, 0.0442481, 0.674022 )
+transform = Transform( 0.00646803, 0.0624397, -0.998028, -0.995595, -0.0929489, -0.0122674, -0.0935317, 0.993711, 0.0615635, -0.372792, 0.02571, 0.629195 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
@@ -118,7 +133,7 @@ transform = Transform( 0.854551, 0.34017, -0.392459, -0.457104, 0.851358, -0.257
 transform = Transform( -0.00247751, -0.0337222, 0.264144, 0.0127956, 0.421088, 0.0212327, -0.250661, 0.0218287, -0.0015269, 0.082, 0.356, -0.046 )
 
 [node name="LeftHand" type="BoneAttachment" parent="Armature/Skeleton" index="10"]
-transform = Transform( -0.0299623, 0.0258272, -0.999217, -0.712631, -0.70153, 0.00323578, -0.700898, 0.712171, 0.039425, 0.454802, -0.297748, 0.433578 )
+transform = Transform( 0.00725808, 0.0467637, -0.99888, -0.773713, -0.632555, -0.0352359, -0.633494, 0.773103, 0.0315907, 0.454766, -0.248609, 0.424116 )
 bone_name = "hand_l"
 
 [node name="SpotLight" type="SpotLight" parent="Armature/Skeleton/LeftHand" index="0"]
@@ -131,6 +146,7 @@ tree_root = SubResource( 1 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 2 )
+parameters/Throw/TimeScale/scale = 2.0
 
 [connection signal="animation_changed" from="AnimationPlayer" to="Armature/Skeleton/BoneAttachment/Spatial/Sword" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="Armature/Skeleton/BoneAttachment/Spatial/Sword" method="_on_AnimationPlayer_animation_finished"]

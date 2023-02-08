@@ -32,6 +32,7 @@ func _ready():
 	print(mat)
 	mat.set("shader_param/transparency",1.0);
 	mat.set("shader_param/tint", 1.0);
+	player_animator.set_speed_scale(100);
 
 func _physics_process(delta):
 	movePlayer(delta);
