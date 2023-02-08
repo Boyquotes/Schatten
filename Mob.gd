@@ -6,7 +6,7 @@ export var min_speed = 4
 # Maximum speed of the mob in meters per second.
 export var max_speed = 7
 
-var damage = 10
+var damage = 5
 
 var velocity = Vector3.ZERO
 
