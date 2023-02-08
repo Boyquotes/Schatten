@@ -8,7 +8,7 @@ var Other = null;
 var to_hand:bool = true;
 var waiting:bool = false;
 onready var light = $".";
-var Speed = 20
+var Speed = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,5 +47,5 @@ func timeout():
 
 	result.y = light.get_global_translation().y
 	move_to = result
-	Speed = 20;
+	Speed = 40;
 	
