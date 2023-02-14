@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform sampler2D mask;
 uniform sampler2D tex;
 uniform float fac;
+uniform float lightness;
 
 void fragment()
 {
@@ -16,7 +17,7 @@ void fragment()
 		if (texture(mask,UV).a != 0.0)
 		{
 			Col = texture(tex, newUV * vec2(.95,1.0)).rgba;
-		// 
+			Col.rgb = Col.rgb * lightness;
 		}
 		else
 		{

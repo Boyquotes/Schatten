@@ -8,6 +8,7 @@
 [sub_resource type="ShaderMaterial" id=18]
 shader = ExtResource( 1 )
 shader_param/fac = 1.0
+shader_param/lightness = 3.0
 shader_param/mask = ExtResource( 3 )
 shader_param/tex = ExtResource( 2 )
 
