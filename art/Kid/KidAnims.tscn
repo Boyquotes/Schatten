@@ -123,7 +123,7 @@ material/0 = ExtResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( 0.00646803, 0.0624397, -0.998028, -0.995595, -0.0929489, -0.0122674, -0.0935317, 0.993711, 0.0615635, -0.372792, 0.02571, 0.629195 )
+transform = Transform( -1.79135e-07, -1, -5.71167e-08, -0.999989, 1.49849e-07, -0.0046109, 0.00461087, 1.01015e-07, -0.99999, -1.23967, 0.397193, 1.26716e-07 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
@@ -133,7 +133,7 @@ transform = Transform( 0.854551, 0.34017, -0.392459, -0.457104, 0.851358, -0.257
 transform = Transform( -0.00247751, -0.0337222, 0.264144, 0.0127956, 0.421088, 0.0212327, -0.250661, 0.0218287, -0.0015269, 0.082, 0.356, -0.046 )
 
 [node name="LeftHand" type="BoneAttachment" parent="Armature/Skeleton" index="10"]
-transform = Transform( 0.00725808, 0.0467637, -0.99888, -0.773713, -0.632555, -0.0352359, -0.633494, 0.773103, 0.0315907, 0.454766, -0.248609, 0.424116 )
+transform = Transform( -2.08587e-07, 0.999999, -2.9757e-08, -1, -5.96025e-08, 9.1062e-05, 9.11514e-05, -1.19236e-07, 1, 1.23986, 0.397192, -1.09083e-07 )
 bone_name = "hand_l"
 
 [node name="SpotLight" type="SpotLight" parent="Armature/Skeleton/LeftHand" index="0"]
