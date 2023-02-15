@@ -3,6 +3,7 @@ extends OmniLight
 var move_to = null
 
 onready var Hand = $"../Player/Pivot/KidActions/Armature/Skeleton/LeftHand/Spatial";
+onready var RHand = $"../Player/Pivot/KidActions/Armature/Skeleton/BoneAttachment";
 onready var SwingTimer = $"BearFinal/Timer"
 var Other = null;
 var to_hand:bool = true;
@@ -12,7 +13,7 @@ var Speed = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(SwingTimer)
+	print(RHand)
 	SwingTimer.connect("timeout",self,"timeout");
 
 
@@ -28,10 +29,11 @@ func _physics_process(_delta):
 			Speed = 45;
 			
 	if to_hand or waiting:
-		move_to = Hand.get_global_translation() + Vector3(-1,4,0);
+		var offset = Hand.get_global_translation() - RHand.get_global_translation()
+		move_to = Hand.get_global_translation() + (offset.normalized() * 1.0);
 		
-		# var computed_translation = result - light.get_global_translation()
-		# light.translate(computed_translation)
+		#var computed_translation = result - light.get_global_translation()
+		#light.translate(computed_translation)
 	if (move_to != null):
 		light.global_translation = light.get_global_translation().move_toward(move_to, Speed * _delta)
 
