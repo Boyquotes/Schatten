@@ -29,7 +29,7 @@
 [ext_resource path="res://art/GUI/HealthBar1.png" type="Texture" id=27]
 [ext_resource path="res://TextureHealthBar.gd" type="Script" id=28]
 [ext_resource path="res://art/GUI/HealthBar.tscn" type="PackedScene" id=29]
-[ext_resource path="res://art/Boss/BearBase.tscn" type="PackedScene" id=30]
+[ext_resource path="res://art/Boss/BearBoss.tscn" type="PackedScene" id=30]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 1, 30 )
@@ -290,7 +290,7 @@ material/2 = ExtResource( 25 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.002, 1.71837, 0 )
 shape = SubResource( 16 )
 
-[node name="BearRigFBXport" parent="." instance=ExtResource( 30 )]
-transform = Transform( -91.096, 34.0667, -23.2589, -23.7298, 2.84145, 97.1021, 33.7404, 93.9755, 5.49549, 7.71205, 3.50115, 1.4284 )
+[node name="trail_arm" parent="." instance=ExtResource( 30 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 5.78988, -1.7472, 7.46137 )
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
