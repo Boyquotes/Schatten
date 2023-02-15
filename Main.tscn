@@ -215,7 +215,7 @@ material/0 = ExtResource( 20 )
 shape = SubResource( 12 )
 
 [node name="TopBound" type="MeshInstance" parent="Bounds"]
-transform = Transform( -5.63992e-08, -30.3969, -5.63992e-08, 0, -1.02978e-06, 1, -1, 1.02978e-06, 1.91069e-15, 0, -1.06, -18.9225 )
+transform = Transform( -5.63992e-08, -30.3969, -5.63992e-08, 0, -1.02978e-06, 1, -0.957913, 9.86439e-07, 1.83027e-15, 0, -1.06, -18.0799 )
 mesh = SubResource( 11 )
 skeleton = NodePath("../../CameraPivot/Camera")
 material/0 = ExtResource( 20 )
@@ -226,7 +226,7 @@ material/0 = ExtResource( 20 )
 shape = SubResource( 12 )
 
 [node name="BottomBound" type="MeshInstance" parent="Bounds"]
-transform = Transform( -5.63992e-08, -30.3969, -5.63992e-08, 0, -1.02978e-06, 1, -1, 1.02978e-06, 1.91069e-15, 0, -1.06, 21.1167 )
+transform = Transform( -5.63992e-08, -30.3969, -5.63992e-08, 0, -1.02978e-06, 1, -0.957913, 9.86439e-07, 1.83027e-15, 0, -1.06, 20.2741 )
 mesh = SubResource( 11 )
 skeleton = NodePath("../../CameraPivot/Camera")
 material/0 = ExtResource( 20 )

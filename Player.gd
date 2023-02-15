@@ -75,6 +75,11 @@ func movePlayer(delta):
 		velocity.z = direction.z * speed
 		velocity.y -= fall_acceleration * delta
 		velocity = move_and_slide(velocity, Vector3.UP)
+	else:
+		velocity = Vector3(0,0,0);
+		#TODO: There is an error here where it does not correctly travel from walk to idle
+		if player_states.get_current_node() == "Walk":
+			player_states.travel("Idle");
 
 #
 func _process(delta):
