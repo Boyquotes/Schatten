@@ -14,7 +14,7 @@ var Speed = 40
 func _ready():
 	print(SwingTimer)
 	SwingTimer.connect("timeout",self,"timeout");
-	pass # Replace with function body.
+
 
 func _physics_process(_delta):
 	

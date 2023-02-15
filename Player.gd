@@ -67,11 +67,14 @@ func movePlayer(delta):
 		player_animator.set("speed",4);
 		particles.set("emitting", true);
 		particles2.set("emitting", true);
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-	velocity.y -= fall_acceleration * delta
-	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	# Get distance from player to height
+	var distanceToLight = light.get_global_translation().distance_to(get_global_translation())
+	if !light.to_hand || distanceToLight > 8:
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+		velocity.y -= fall_acceleration * delta
+		velocity = move_and_slide(velocity, Vector3.UP)
 
 #
 func _process(delta):
