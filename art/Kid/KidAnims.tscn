@@ -25,7 +25,7 @@ nodes/Throw/position = Vector2( 80.1195, 118.368 )
 nodes/TimeScale/node = SubResource( 30 )
 nodes/TimeScale/position = Vector2( 93.3333, 253.333 )
 nodes/output/position = Vector2( 426.667, 120 )
-node_connections = [ "TimeScale", 0, "Throw", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Throw" ]
 
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Walk"
@@ -95,6 +95,10 @@ graph_offset = Vector2( -289.968, -157.114 )
 
 [node name="KidAnims" instance=ExtResource( 2 )]
 
+[node name="Skeleton" parent="Armature" index="0"]
+bones/12/bound_children = [ NodePath("BoneAttachment") ]
+bones/16/bound_children = [ NodePath("LeftHand") ]
+
 [node name="Band_low" parent="Armature/Skeleton" index="0"]
 material/0 = ExtResource( 3 )
 
@@ -123,7 +127,7 @@ material/0 = ExtResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( -1.79135e-07, -1, -5.71167e-08, -0.999989, 1.49849e-07, -0.0046109, 0.00461087, 1.01015e-07, -0.99999, -1.23967, 0.397193, 1.26716e-07 )
+transform = Transform( 0.0064496, 0.0603742, -0.998155, -0.995355, -0.0954965, -0.0122076, -0.0960573, 0.993597, 0.059478, -0.374075, 0.0249991, 0.627336 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
@@ -133,7 +137,7 @@ transform = Transform( 0.854551, 0.34017, -0.392459, -0.457104, 0.851358, -0.257
 transform = Transform( -0.00247751, -0.0337222, 0.264144, 0.0127956, 0.421088, 0.0212327, -0.250661, 0.0218287, -0.0015269, 0.082, 0.356, -0.046 )
 
 [node name="LeftHand" type="BoneAttachment" parent="Armature/Skeleton" index="10"]
-transform = Transform( -2.08587e-07, 0.999999, -2.9757e-08, -1, -5.96025e-08, 9.1062e-05, 9.11514e-05, -1.19236e-07, 1, 1.23986, 0.397192, -1.09083e-07 )
+transform = Transform( 0.00877778, 0.0475445, -0.99883, -0.775988, -0.629672, -0.0367921, -0.630685, 0.775404, 0.031367, 0.454739, -0.246585, 0.423694 )
 bone_name = "hand_l"
 
 [node name="SpotLight" type="SpotLight" parent="Armature/Skeleton/LeftHand" index="0"]

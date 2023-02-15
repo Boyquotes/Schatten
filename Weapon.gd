@@ -112,7 +112,8 @@ func _on_Area_body_entered(body):
 		body.take_damage()
 		enemiesHit.append(body.name)
 
-
+func is_swinging():
+	return state == State.STATE_SWINGING
 func _on_swing_end():
 	enemiesHit = []
 	state = State.STATE_IDLE

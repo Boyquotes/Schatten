@@ -29,7 +29,7 @@ func _physics_process(_delta):
 		var player = get_node("../../Player")
 		var target = result.position
 		target.y = player.get_global_translation().y
-		player.look_at(target, Vector3.UP)
+		player.face_player(target)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -27,6 +27,8 @@ var can_damage:bool = true;
 onready var particles = $"CPUParticles";
 onready var particles2 = $"CPUParticles2";
 
+onready var weapon = $"Pivot/KidActions/Armature/Skeleton/BoneAttachment/Spatial/Sword"
+
 func _ready():
 	player_animator.get_animation("Idle").set_loop(true);
 	print(mat)
@@ -111,3 +113,7 @@ func _on_Area_body_entered(body):
 func _on_DamageTween_tween_completed(object, key):
 	mat.set("shader_param/tint", 1.0);
 	mat.set("shader_param/transparency",1.00);
+	
+func face_player(target):
+	if !weapon.is_swinging():
+		self.look_at(target, Vector3.UP)
