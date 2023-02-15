@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	if to_hand or waiting:
 		var offset = Hand.get_global_translation() - RHand.get_global_translation()
 		move_to = Hand.get_global_translation() + (offset.normalized() * 1.0);
-		
+		move_to.y = get_global_translation().y;
 		#var computed_translation = result - light.get_global_translation()
 		#light.translate(computed_translation)
 	if (move_to != null):

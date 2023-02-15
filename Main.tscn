@@ -91,7 +91,7 @@ mesh = SubResource( 2 )
 material/0 = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1407, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.06948, 0 )
 light_energy = 2.116
 shadow_enabled = true
 shadow_bias = 1.2
