@@ -95,6 +95,10 @@ graph_offset = Vector2( -289.968, -157.114 )
 
 [node name="KidAnims" instance=ExtResource( 2 )]
 
+[node name="Skeleton" parent="Armature" index="0"]
+bones/12/bound_children = [ NodePath("BoneAttachment") ]
+bones/16/bound_children = [ NodePath("LeftHand") ]
+
 [node name="Band_low" parent="Armature/Skeleton" index="0"]
 material/0 = ExtResource( 3 )
 
@@ -123,7 +127,7 @@ material/0 = ExtResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton" index="9"]
-transform = Transform( 0.00939015, 0.116491, -0.993147, -0.999588, -0.0258296, -0.0124807, -0.0271065, 0.992855, 0.116201, -0.338497, 0.0450506, 0.675761 )
+transform = Transform( 0.00663911, 0.0718556, -0.997393, -0.996609, -0.0813306, -0.0124932, -0.0820164, 0.994093, 0.071072, -0.36692, 0.0289594, 0.637607 )
 bone_name = "hand_r"
 
 [node name="Spatial" type="Spatial" parent="Armature/Skeleton/BoneAttachment" index="0"]
@@ -133,13 +137,10 @@ transform = Transform( 0.854551, 0.34017, -0.392459, -0.457104, 0.851358, -0.257
 transform = Transform( -0.00247751, -0.0337222, 0.264144, 0.0127956, 0.421088, 0.0212327, -0.250661, 0.0218287, -0.0015269, 0.082, 0.356, -0.046 )
 
 [node name="LeftHand" type="BoneAttachment" parent="Armature/Skeleton" index="10"]
-transform = Transform( -0.0314926, 0.0248884, -0.999193, -0.709918, -0.704267, 0.00483271, -0.703579, 0.709498, 0.0398481, 0.454758, -0.299701, 0.433873 )
+transform = Transform( 0.000416999, 0.0431795, -0.999067, -0.763242, -0.645495, -0.0282171, -0.646112, 0.762542, 0.0326875, 0.454881, -0.257748, 0.426032 )
 bone_name = "hand_l"
 
-[node name="SpotLight" type="SpotLight" parent="Armature/Skeleton/LeftHand" index="0"]
-transform = Transform( -0.262563, 0.346863, 0.00818655, -0.137373, -0.0945013, -0.401894, -0.318605, -0.245104, 0.166538, 0.00610846, 0.00867055, 0.000226706 )
-
-[node name="Spatial" type="Spatial" parent="Armature/Skeleton/LeftHand" index="1"]
+[node name="Spatial" type="Spatial" parent="Armature/Skeleton/LeftHand" index="0"]
 transform = Transform( 0.993247, -0.109255, 0.0390492, 0.108336, 0.993802, 0.0249129, -0.0415291, -0.0205145, 0.998927, 0.0115864, -0.00495555, -0.122511 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
