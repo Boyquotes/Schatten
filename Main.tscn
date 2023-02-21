@@ -291,6 +291,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.002, 1.71837, 0 )
 shape = SubResource( 16 )
 
 [node name="trail_arm" parent="." instance=ExtResource( 30 )]
-transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 5.78988, -1.7472, 7.46137 )
+transform = Transform( 100, 0, 0, 0, 8.71558, 99.6195, 0, -99.6195, 8.71558, 10.1802, -1.51161, 7.46137 )
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
