@@ -13,7 +13,7 @@ onready var player = $"/root/Main/Player"
 onready var space_state = get_world().direct_space_state
 onready var areaColl = $"Area/Area@CollisionShape"
 onready var area = $"Area"
-onready var swing_duration = $"../AnimationPlayer".get_animation("SwordSwing").length
+onready var swing_duration = $"../../../../../AnimationPlayer".get_animation("SwordSwing").length
 
 var timer
 var state = State.STATE_IDLE
