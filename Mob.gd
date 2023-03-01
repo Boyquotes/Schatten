@@ -1,5 +1,6 @@
 extends KinematicBody
 onready var player := get_node("/root/Main/Player")
+onready var boss_spawn := get_node("/root/Main/BearSpawn")
 
 # Minimum speed of the mob in meters per second.
 export var min_speed = 4
@@ -32,4 +33,5 @@ func _on_VisibilityNotifier_screen_exited():
 	
 func take_damage():
 	print("I took damage!");
+	boss_spawn.update_count();
 	queue_free()
