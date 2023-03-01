@@ -2,13 +2,11 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/BossClaw.gltf-167755a71d7614128535b9c5d6f1f98e.scn"
+valid=false
 
 [deps]
 
 source_file="res://art/Boss/BearAnimElements/BossClaw.gltf"
-dest_files=[ "res://.import/BossClaw.gltf-167755a71d7614128535b9c5d6f1f98e.scn" ]
-
 [params]
 
 nodes/root_type="Spatial"
