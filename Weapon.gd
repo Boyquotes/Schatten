@@ -6,14 +6,14 @@ var immediate_geometry
 var enemiesHit = []
 enum State {STATE_IDLE, STATE_SWINGING}
 
-onready var lightsource = $"../../../../../../../../OmniLight"
+onready var lightsource = $"/root/Main/OmniLight"
 onready var swordPivot = $"./SwordBase"
 onready var swordTip = $"./SwordTip"
-onready var player = $"../../../../../../../../Player"
+onready var player = $"/root/Main/Player"
 onready var space_state = get_world().direct_space_state
 onready var areaColl = $"Area/Area@CollisionShape"
 onready var area = $"Area"
-onready var swing_duration = $"../../../../../../../../Player/Pivot/KidActions/AnimationPlayer".get_animation("SwordSwing").length
+onready var swing_duration = $"../AnimationPlayer".get_animation("SwordSwing").length
 
 var timer
 var state = State.STATE_IDLE
