@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://art/Boss/BearAnimElements/BearSpawn.mat.tres" type="Material" id=1]
 [ext_resource path="res://art/Boss/BearAnimElements/BearSpawn.gd" type="Script" id=2]
@@ -7,7 +7,53 @@
 flip_faces = true
 size = Vector2( 1, 1 )
 
-[node name="MeshInstance" type="MeshInstance"]
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
+radius = 0.25
+height = 0.445
+radial_segments = 7
+rings = 8
+
+[sub_resource type="Gradient" id=4]
+interpolation_mode = 2
+offsets = PoolRealArray( 0.00554017, 0.296399, 1 )
+colors = PoolColorArray( 0.946777, 0.762133, 0.233284, 1, 0.317871, 0.108553, 0.312148, 1, 0.275683, 0, 0.907715, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -2, 3.01992e-07, 0, -3.01992e-07, -2, 0, 0, 0, 2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.5
+explosiveness = 0.54
+local_coords = false
+mesh = SubResource( 3 )
+emission_shape = 4
+emission_points = PoolVector3Array( 20, 0, 0 )
+emission_normals = PoolVector3Array(  )
+emission_colors = PoolColorArray(  )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 11.27
+angular_velocity = 2.7
+linear_accel = 0.95
+linear_accel_random = 0.21
+radial_accel = -150.0
+tangential_accel_random = 0.24
+scale_amount_random = 0.51
+color_ramp = SubResource( 4 )
+hue_variation_random = 0.19
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="MeshInstance" method="_on_Timer_timeout"]
