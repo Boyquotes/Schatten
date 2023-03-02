@@ -62,3 +62,6 @@ func _on_PauseTimer_timeout():
 func _on_Area_body_entered(body:Node):
 	if body.name == "Player" && swinging:
 		player.take_damage(damage)
+
+func _on_Area_area_entered(other:Area):
+	pass
