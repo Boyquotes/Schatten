@@ -14,6 +14,8 @@ var swing_threshold = 3.0;
 export var speed_fac = 0.25;
 var dist = 20;
 
+export var damage = 15
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(boss_anim_tree)
@@ -56,3 +58,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 #pauses after swinging slightly
 func _on_PauseTimer_timeout():
 	swinging = false
+
+func _on_Area_body_entered(body:Node):
+	if body.name == "Player" && swinging:
+		player.take_damage(damage)

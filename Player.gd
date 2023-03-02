@@ -91,18 +91,21 @@ func _on_DashTimer_timeout():
 
 func _on_Area_body_entered(body):
 	if body.damage && can_damage:
+		take_damage(body.damage)
+		body.queue_free()
+
+
+func take_damage(damage:float):
 		mat.set("shader_param/tint", 3.0);
 		DmgTween.interpolate_property(mat,"shader_param/transparency",1.0,0.0,.5,Tween.TRANS_BOUNCE,Tween.EASE_OUT);
 		DmgTween.start();
-		health -= body.damage
+		health -= damage
 		if (health <= 0):
 			health = 0
 			emit_signal("health_changed", 0)
 			print("you ded")
 		else:
 			emit_signal("health_changed", health)
-		body.queue_free()
-
 
 
 func _on_DamageTween_tween_completed(object, key):
