@@ -67,11 +67,19 @@ func movePlayer(delta):
 		player_animator.set("speed",4);
 		particles.set("emitting", true);
 		particles2.set("emitting", true);
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-	velocity.y -= fall_acceleration * delta
-	velocity = move_and_slide(velocity, Vector3.UP)
+	
+	# Get distance from player to height
+	var distanceToLight = light.get_global_translation().distance_to(get_global_translation())
+	if !light.to_hand || distanceToLight > 8:
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+		velocity.y -= fall_acceleration * delta
+		velocity = move_and_slide(velocity, Vector3.UP)
+	else:
+		velocity = Vector3(0,0,0);
+		#TODO: There is an error here where it does not correctly travel from walk to idle
+		if player_states.get_current_node() == "Walk":
+			player_states.travel("Idle");
 
 #
 func _process(delta):

@@ -6,14 +6,14 @@ var immediate_geometry
 var enemiesHit = []
 enum State {STATE_IDLE, STATE_SWINGING}
 
-onready var lightsource = $"../../../../../../../../OmniLight"
+onready var lightsource = $"/root/Main/OmniLight"
 onready var swordPivot = $"./SwordBase"
 onready var swordTip = $"./SwordTip"
-onready var player = $"../../../../../../../../Player"
+onready var player = $"/root/Main/Player"
 onready var space_state = get_world().direct_space_state
 onready var areaColl = $"Area/Area@CollisionShape"
 onready var area = $"Area"
-onready var swing_duration = $"../../../../../../../../Player/Pivot/KidActions/AnimationPlayer".get_animation("SwordSwing").length
+onready var swing_duration = $"../../../../../AnimationPlayer".get_animation("SwordSwing").length
 
 var timer
 var state = State.STATE_IDLE
@@ -40,7 +40,7 @@ func _process(delta):
 		timer.start()
 		
 func _physics_process(delta):
-	detect_enemy()
+	set_weapon_hit_pos()
 
 #
 # get the light source position and get sword pivot/tip position
@@ -48,14 +48,14 @@ func _physics_process(delta):
 # where this point intersects the ground draw a line between the tip and pivot
 # during each swing, keep track of the enemies hit by the ray in enemiesHit,
 # if not already hit, deal damage to them.
-func detect_enemy():
+func set_weapon_hit_pos():
 	# cast ray from pivot to ground
 	var pivot_to = swordPivot.get_global_translation() + (swordPivot.get_global_translation() - lightsource.get_global_translation()).normalized() * 50
 	var pivot_ray = space_state.intersect_ray(lightsource.get_global_translation(), pivot_to,[player])
 	
 	# cast ray from swordTip to ground
 	var tip_to = swordTip.get_global_translation() + (swordTip.get_global_translation() - lightsource.get_global_translation()).normalized() * 50
-	var tip_ray = space_state.intersect_ray(lightsource.get_global_translation(), tip_to,[player])
+	var tip_ray = space_state.intersect_ray(lightsource.get_global_translation(), tip_to,[player],8)
 	
 	if tip_ray and tip_ray.position != null and pivot_ray and pivot_ray.position != null:
 		#get position for where the ray hits the ground
@@ -72,24 +72,43 @@ func detect_enemy():
 	
 	
 func line(pos1: Vector3, pos2: Vector3, color = Color.white):
-	immediate_geometry.clear()
-	immediate_geometry.begin(Mesh.PRIMITIVE_LINES)
 	immediate_geometry.set_color(color)
 	immediate_geometry.add_vertex(pos1)
 	immediate_geometry.set_color(color)
 	immediate_geometry.add_vertex(pos2)
+	
+	
+func draw_thick_line(pos1: Vector3, pos2: Vector3, color = Color.white):
+	var offset=0.05
+	pos2.y = 0
+	pos1.y = 0
+	immediate_geometry.clear()
+	immediate_geometry.begin(Mesh.PRIMITIVE_LINES)
+	line(pos1,pos2,color)
+	line(pos1+Vector3(offset,0,0),pos2+Vector3(offset,0,0),color)
+	line(pos1+Vector3(offset,0,offset),pos2+Vector3(offset,0,offset),color)
+	line(pos1+Vector3(0,0,offset),pos2+Vector3(0,0,offset),color)
+	line(pos1-Vector3(offset,0,0),pos2-Vector3(offset,0,0),color)
+	line(pos1-Vector3(offset,0,offset),pos2-Vector3(offset,0,offset),color)
+	line(pos1-Vector3(0,0,offset),pos2-Vector3(0,0,offset),color)
 	immediate_geometry.end()	
 
 func set_sword_area_position(pivot,tip):
 	#translate to position of the shadow
 	# make the length of the sword as long as the shadow, as wide as the shadow
-	area.set_global_translation((pivot+tip)/2)
-	areaColl.shape.extents.y = ((pivot.y - tip.y)/2)
+	areaColl.global_rotation.z = 1
+	areaColl.global_translation = tip
+	areaColl.shape.extents.x =  1
+	areaColl.shape.extents.y = 1
+	areaColl.shape.extents.z = 1
 
-	line(area.get_global_translation(),area.get_global_translation()+ Vector3(0,areaColl.shape.extents.y,0))
 	
 func _on_Area_body_entered(body):
-	if body.name.find("Mob") >= 0 && state == State.STATE_SWINGING && !enemiesHit.has(body.name):
+	if (
+		body.name.find("Mob") >= 0 
+		&& state == State.STATE_SWINGING 
+		&& !enemiesHit.has(body.name)
+	):
 		body.take_damage()
 		enemiesHit.append(body.name)
 
