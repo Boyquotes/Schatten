@@ -4,7 +4,7 @@ onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.ts
 
 export var threshold = 5;
 var base_scale = 1.0;
-var max_scale = 10.0;
+var max_scale = 15.0;
 
 var kill_count = 0;
 var spawned = false;
