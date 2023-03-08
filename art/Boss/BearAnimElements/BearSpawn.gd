@@ -4,7 +4,7 @@ onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.ts
 onready var particles = $"../CPUParticles"
 onready var timer = $"../Timer"
 
-export var threshold = 12;
+export var threshold = 2;
 var base_scale = 1.0;
 var max_scale = 15.0;
 
