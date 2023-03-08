@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://art/TitleScreen/UpdatedTitleArt.jpg" type="Texture" id=1]
 [ext_resource path="res://PlayButton.gd" type="Script" id=2]
 [ext_resource path="res://sound/TitleScreen.wav" type="AudioStream" id=3]
-[ext_resource path="res://art/TitleScreen/Button.png" type="Texture" id=4]
 [ext_resource path="res://art/TitleScreen/PlayText.png" type="Texture" id=5]
 [ext_resource path="res://art/TitleScreen/CreditsText.png" type="Texture" id=6]
+[ext_resource path="res://art/GUI/Art2.png" type="Texture" id=9]
+[ext_resource path="res://art/GUI/ButtonPressed.png" type="Texture" id=10]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -19,64 +20,61 @@ margin_bottom = -10.0
 rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 1 )
 
-[node name="Button" type="Button" parent="."]
-anchor_left = 0.798
-anchor_top = 0.367
-anchor_right = 0.798
-anchor_bottom = 0.367
-margin_left = -159.152
-margin_top = -32.2
-margin_right = 623.848
-margin_bottom = 247.8
+[node name="CreditsButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -59.0
+margin_right = 685.0
+margin_bottom = 215.0
 rect_scale = Vector2( 0.4, 0.4 )
-text = "PLAY"
-icon = ExtResource( 4 )
-flat = true
-clip_text = true
-script = ExtResource( 2 )
+rect_pivot_offset = Vector2( 384.5, 137 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
 
-[node name="TextureRect" type="TextureRect" parent="Button"]
+[node name="ButtonText" type="TextureRect" parent="CreditsButton"]
 anchor_left = 0.471
 anchor_top = 0.42
 anchor_right = 0.471
 anchor_bottom = 0.42
-margin_left = -103.793
-margin_top = -92.6001
-margin_right = 148.207
-margin_bottom = 107.4
-rect_scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 5 )
-
-[node name="Button" type="Button" parent="Button"]
-anchor_left = 0.798
-anchor_top = 0.367
-anchor_right = 0.798
-anchor_bottom = 0.367
-margin_left = -614.834
-margin_top = 199.74
-margin_right = 168.166
-margin_bottom = 479.74
-text = "PLAY"
-icon = ExtResource( 4 )
-flat = true
-clip_text = true
-script = ExtResource( 2 )
-
-[node name="TextureRect" type="TextureRect" parent="Button/Button"]
-anchor_left = 0.471
-anchor_top = 0.42
-anchor_right = 0.471
-anchor_bottom = 0.42
-margin_left = -198.793
-margin_top = -75.1001
-margin_right = 225.207
-margin_bottom = 124.9
+margin_left = -191.449
+margin_top = -73.08
+margin_right = 232.551
+margin_bottom = 126.92
 rect_scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 6 )
+
+[node name="PlayButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -191.0
+margin_right = 685.0
+margin_bottom = 83.0
+rect_scale = Vector2( 0.4, 0.4 )
+rect_pivot_offset = Vector2( 384.5, 137 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+script = ExtResource( 2 )
+
+[node name="ButtonText" type="TextureRect" parent="PlayButton"]
+anchor_left = 0.471
+anchor_top = 0.42
+anchor_right = 0.471
+anchor_bottom = 0.42
+margin_left = -106.449
+margin_top = -88.08
+margin_right = 145.551
+margin_bottom = 111.92
+rect_scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
 
-[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
-[connection signal="pressed" from="Button/Button" to="Button/Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
