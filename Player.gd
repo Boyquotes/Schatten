@@ -108,10 +108,12 @@ func take_damage(damage:float):
 		DmgTween.interpolate_property(mat,"shader_param/transparency",1.0,0.0,.5,Tween.TRANS_BOUNCE,Tween.EASE_OUT);
 		DmgTween.start();
 		health -= damage
+		#health = 0
 		if (health <= 0):
 			health = 0
 			emit_signal("health_changed", 0)
 			print("you ded")
+			$"/root/Main/CanvasLayer/DeathPopup"._deathPopup()
 		else:
 			emit_signal("health_changed", health)
 
