@@ -391,7 +391,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.002, 1.71837, 0 )
 shape = SubResource( 16 )
 
 [node name="BearSpawn" parent="." instance=ExtResource( 36 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67323, -1.47183, -7.19065 )
+transform = Transform( 1.2666e-07, 0, -1, 0, 1, 0, 1, 0, 1.2666e-07, 9.478, -2.0903, -7.63 )
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/MenuBackground/ContinueButton" to="CanvasLayer/PauseMenu/MenuBackground/ContinueButton" method="_on_TextureButton_pressed"]

@@ -1,6 +1,7 @@
 extends MeshInstance
 
-onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.tscn").instance()
+onready var bear_flip_ref = preload("res://art/Boss/BearAnimElements/BearBedFlip.tscn").instance()
+onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.tscn").instance();
 onready var particles = $"../CPUParticles"
 onready var timer = $"../Timer"
 
@@ -16,8 +17,8 @@ var spawned = false;
 
 func spawn_bear():
 	spawned = true;
-	var par = get_parent();
-	par.add_child(bear_ref);
+	var par = get_parent().get_parent();
+	par.add_child(bear_flip_ref);
 	spawned = true
 	set("visible",false)
 	return;

@@ -33,7 +33,6 @@ func _on_VisibilityNotifier_screen_exited():
 	queue_free()
 	
 func take_damage():
-	print("I took damage!");
 	boss_spawn.particles.set_emission_points([get_global_translation()])
 	boss_spawn.update_count();
 	queue_free()

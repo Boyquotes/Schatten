@@ -41,7 +41,7 @@ func _on_Timer_timeout():
 	speed_fac = rand_range(0.2,0.75) / 4;
 	dist = abs(dir.length());
 	if !swinging && (abs(dist) <= swing_threshold):	
-			swing();
+		swing();
 
 
 

@@ -30,6 +30,7 @@ transform = Transform( -2, 3.01992e-07, 0, -3.01992e-07, -2, 0, 0, 0, 2, 0, 0, 0
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 script = ExtResource( 2 )
+threshold = 10
 
 [node name="CPUParticles" type="CPUParticles" parent="."]
 emitting = false
