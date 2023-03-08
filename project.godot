@@ -15,10 +15,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Schatten"
-config/description="In this game, your goal is to chase and kick out the creeps!
-
-This is a finished version of the game featured in the 'Your first 3D game'
-tutorial in the official documentation."
 run/main_scene="res://TitleScreen.tscn"
 config/icon="res://icon.png"
 
