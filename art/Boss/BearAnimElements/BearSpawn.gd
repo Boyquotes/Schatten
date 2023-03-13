@@ -23,6 +23,12 @@ func spawn_bear():
 	spawned = true
 	set("visible",false)
 	bed_ref.flip(7.5)
+	bear_flip_ref.flip();
+	yield(get_tree().create_timer(8.0), "timeout"); 
+	bear_ref.set("translation",bear_flip_ref.placeholder.get_global_transform().origin);
+	#spews out errors here, and either moves too fast or is not spawning in the right place
+	bear_flip_ref.queue_free();
+	par.add_child(bear_ref);
 	return;
 
 func update_count():
