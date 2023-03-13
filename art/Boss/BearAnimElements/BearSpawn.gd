@@ -4,6 +4,7 @@ onready var bear_flip_ref = preload("res://art/Boss/BearAnimElements/BearBedFlip
 onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.tscn").instance();
 onready var particles = $"../CPUParticles"
 onready var timer = $"../Timer"
+onready var bed_ref = $"../../Bed2"
 
 export var threshold = 2;
 var base_scale = 1.0;
@@ -21,6 +22,7 @@ func spawn_bear():
 	par.add_child(bear_flip_ref);
 	spawned = true
 	set("visible",false)
+	bed_ref.flip(7.5)
 	return;
 
 func update_count():
