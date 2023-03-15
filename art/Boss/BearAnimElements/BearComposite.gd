@@ -14,7 +14,10 @@ var swing_threshold = 5.0;
 export var speed_fac = 0.25;
 var dist = 20;
 
-export var damage = 15
+export var damage = 50;
+export var health = 100;
+
+
 
 #
 ##wrap the swing functionality
@@ -49,3 +52,11 @@ func _on_Timer_timeout():
 func _on_Area_body_entered(body):
 	if body.name == "Player" && swinging:
 		player.take_damage(damage);
+
+func take_damage()->void:
+	print("HELP");
+	health -= damage;
+	print(health)
+	if health <= 0:
+		print("I died")
+		queue_free();

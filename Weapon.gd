@@ -105,7 +105,7 @@ func set_sword_area_position(pivot,tip):
 	
 func _on_Area_body_entered(body):
 	if (
-		body.name.find("Mob") >= 0 
+		(body.name.find("Mob") >= 0 || body.name.find("BearComposite"))
 		&& state == State.STATE_SWINGING 
 		&& !enemiesHit.has(body.name)
 	):
