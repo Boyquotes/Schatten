@@ -1,5 +1,8 @@
 extends TextureRect
 onready var Tw = $Tween;
+onready var LightInd = $LightIndicator
+
+
 
 func _ready():
 	var player = get_node("/root/Main/Player")
@@ -18,3 +21,9 @@ func interp_health(val:float, time:float):
 
 func set_health(val:float):
 	material.set_shader_param("fac",clamp(val,0.0,1.0));
+
+func toggle_light():
+	if  LightInd.get("texture").get("resource_path") == "res://art/GUI/LightFull.png":
+		LightInd.texture = load("res://art/GUI/LightEmpty.png")
+	elif LightInd.get("texture").get("resource_path") == "res://art/GUI/LightEmpty.png":
+		LightInd.texture = load("res://art/GUI/LightFull.png")

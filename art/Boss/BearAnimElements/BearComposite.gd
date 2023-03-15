@@ -5,6 +5,8 @@ onready var boss_states = boss_anim_tree["parameters/playback"];
 onready var player = $"/root/Main/Player";
 onready var pause_timer = $"PauseTimer"
 
+
+
 export var speed = 1;
 var dir = Vector3(1,0,1);
 var swinging = false;

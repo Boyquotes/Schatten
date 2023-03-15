@@ -28,12 +28,15 @@ var last_dash_time = null;
 onready var particles = $"CPUParticles";
 onready var particles2 = $"CPUParticles2";
 
+onready var UI = $"../CanvasLayer/HealthBar"
+
 func _ready():
 	player_animator.get_animation("Idle").set_loop(true);
 	print(mat)
 	mat.set("shader_param/transparency",1.0);
 	mat.set("shader_param/tint", 1.0);
 	player_animator.set_speed_scale(100);
+	print(UI)
 
 func _physics_process(delta):
 	movePlayer(delta);
@@ -57,8 +60,12 @@ func movePlayer(delta):
 	if Input.is_action_pressed("attack"):
 		player_states.travel("SwordSwing");
 	
+	if Input.is_action_just_pressed("light"):
+		UI.toggle_light();	
+	
 	if Input.is_action_just_pressed("light") && !light.to_hand:
 		player_states.travel("Throw");
+
 	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0 and (last_dash_time == null or OS.get_unix_time() - last_dash_time > 2 ):
 		speed = dash;
 		can_damage = false;
