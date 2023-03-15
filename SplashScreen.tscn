@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://art/TitleScreen/loading_screen.png" type="Texture" id=2]
+[ext_resource path="res://art/GUI/black.png" type="Texture" id=3]
+[ext_resource path="res://SplashScreenImage.gd" type="Script" id=4]
+
+[node name="SplashScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Darken" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="SplashScreenImage" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1373.5
+margin_top = -841.5
+margin_right = 1373.5
+margin_bottom = 841.5
+rect_scale = Vector2( 0.319998, 0.319998 )
+rect_pivot_offset = Vector2( 1373.5, 841.5 )
+texture = ExtResource( 2 )
+stretch_mode = 1
+script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="SplashScreenImage"]
+pause_mode = 2

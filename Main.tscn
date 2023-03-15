@@ -247,14 +247,8 @@ shape = SubResource( 12 )
 [node name="DeathPopup" type="Popup" parent="CanvasLayer"]
 pause_mode = 2
 visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 37 )
 
 [node name="Tween" type="Tween" parent="CanvasLayer/DeathPopup"]
@@ -263,14 +257,8 @@ script = SubResource( 17 )
 
 [node name="Darken" type="TextureRect" parent="CanvasLayer/DeathPopup"]
 self_modulate = Color( 1, 1, 1, 0.47451 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 33 )
 
 [node name="DeathScreen" type="TextureRect" parent="CanvasLayer/DeathPopup"]
@@ -285,32 +273,28 @@ margin_bottom = 219.0
 texture = ExtResource( 35 )
 
 [node name="PressAnywhere" type="TextureRect" parent="CanvasLayer/DeathPopup"]
-margin_left = -194.0
-margin_top = 200.0
-margin_right = 1293.0
-margin_bottom = 646.0
-rect_scale = Vector2( 0.3, 0.3 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -743.5
+margin_top = -61.0
+margin_right = 743.5
+margin_bottom = 539.0
+rect_scale = Vector2( 0.35, 0.35 )
+rect_pivot_offset = Vector2( 743.5, 300 )
 texture = ExtResource( 38 )
 
 [node name="PauseMenu" type="Popup" parent="CanvasLayer"]
 pause_mode = 2
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 21 )
 
 [node name="Darken" type="TextureRect" parent="CanvasLayer/PauseMenu"]
 self_modulate = Color( 1, 1, 1, 0.47451 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -515.0
-margin_top = -303.0
-margin_right = 509.0
-margin_bottom = 297.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 33 )
 
 [node name="MenuBackground" type="TextureRect" parent="CanvasLayer/PauseMenu"]
