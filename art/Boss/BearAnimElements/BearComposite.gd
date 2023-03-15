@@ -14,7 +14,7 @@ var swing_threshold = 5.0;
 export var speed_fac = 0.25;
 var dist = 20;
 
-export var damage = 50;
+export var damage = 10;
 export var health = 100;
 
 
@@ -54,9 +54,6 @@ func _on_Area_body_entered(body):
 		player.take_damage(damage);
 
 func take_damage()->void:
-	print("HELP");
 	health -= damage;
-	print(health)
 	if health <= 0:
-		print("I died")
 		queue_free();
