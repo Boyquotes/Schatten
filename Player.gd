@@ -23,6 +23,7 @@ onready var light = $"../OmniLight";
 onready var dash_timer = $"DashTimer";
 var is_dashing:bool = false;
 var can_damage:bool = true;
+var last_dash_time = null;
 
 onready var particles = $"CPUParticles";
 onready var particles2 = $"CPUParticles2";
@@ -58,7 +59,7 @@ func movePlayer(delta):
 	
 	if Input.is_action_just_pressed("light") && !light.to_hand:
 		player_states.travel("Throw");
-	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0:
+	if Input.is_action_just_pressed("dash") and !is_dashing and velocity.length() != 0 and (last_dash_time == null or OS.get_unix_time() - last_dash_time > 2 ):
 		speed = dash;
 		can_damage = false;
 		dash_timer.start();
@@ -67,6 +68,7 @@ func movePlayer(delta):
 		player_animator.set("speed",4);
 		particles.set("emitting", true);
 		particles2.set("emitting", true);
+		last_dash_time = OS.get_unix_time();
 	
 	# Get distance from player to height
 	var distanceToLight = light.get_global_translation().distance_to(get_global_translation())
