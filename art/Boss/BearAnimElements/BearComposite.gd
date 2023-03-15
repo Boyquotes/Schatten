@@ -14,7 +14,11 @@ var swing_threshold = 5.0;
 export var speed_fac = 0.25;
 var dist = 20;
 
-export var damage = 10;
+#damage to player
+export var damage = 15;
+
+#damage to bear
+export var health_dec = 20;
 export var health = 100;
 
 
@@ -54,6 +58,6 @@ func _on_Area_body_entered(body):
 		player.take_damage(damage);
 
 func take_damage()->void:
-	health -= damage;
+	health -= health_dec;
 	if health <= 0:
 		queue_free();
