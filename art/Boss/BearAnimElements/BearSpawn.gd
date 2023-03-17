@@ -5,7 +5,7 @@ onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.ts
 onready var timer = $"../Timer"
 onready var bed_ref = $"../../Bed2"
 
-export var threshold = 30;
+export var threshold = 12;
 var base_scale = 1.0;
 var max_scale = 15.0;
 

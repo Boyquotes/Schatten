@@ -63,9 +63,10 @@ func _on_Area_body_entered(body):
 
 func take_damage()->void:
 	health -= health_dec;
+	print("Bearhit attempt")
 	game_rig_parent.set("visible",false);
 	bear_hit.set("visible",true);
-	bear_hit.get_child(1).play("Take 001");
+	bear_hit.get_child(1).play("BearHit");
 	yield(get_tree().create_timer(.5), "timeout");
 	bear_hit.set("visible",false);
 	game_rig_parent.set("visible",true);
