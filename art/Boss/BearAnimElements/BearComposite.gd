@@ -4,6 +4,8 @@ onready var boss_anim_tree = get_node("AnimationTree");
 onready var boss_states = boss_anim_tree["parameters/playback"];
 onready var player = $"/root/Main/Player";
 onready var pause_timer = $"PauseTimer"
+onready var game_rig_parent = $"Node";
+onready var bear_hit = $"Bear_hit";
 
 
 
@@ -49,7 +51,7 @@ func _on_Timer_timeout():
 	dir.y = 0;
 	speed_fac = rand_range(0.2,0.75) / 4;
 	dist = abs(dir.length());
-	if !swinging && (abs(dist) <= swing_threshold):	
+	if !swinging && (abs(dist) <= swing_threshold):
 		swing();
 
 
@@ -61,5 +63,11 @@ func _on_Area_body_entered(body):
 
 func take_damage()->void:
 	health -= health_dec;
+	game_rig_parent.set("visible",false);
+	bear_hit.set("visible",true);
+	bear_hit.get_child(1).play("Take 001");
+	yield(get_tree().create_timer(.5), "timeout");
+	bear_hit.set("visible",false);
+	game_rig_parent.set("visible",true);
 	if health <= 0:
 		queue_free();

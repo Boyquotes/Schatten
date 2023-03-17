@@ -2,11 +2,10 @@ extends MeshInstance
 
 onready var bear_flip_ref = preload("res://art/Boss/BearAnimElements/BearBedFlip.tscn").instance()
 onready var bear_ref = preload("res://art/Boss/BearAnimElements/BearComposite.tscn").instance();
-onready var particles = $"../CPUParticles"
 onready var timer = $"../Timer"
 onready var bed_ref = $"../../Bed2"
 
-export var threshold = 2;
+export var threshold = 30;
 var base_scale = 1.0;
 var max_scale = 15.0;
 
@@ -14,7 +13,8 @@ var kill_count = 0;
 var spawned = false;
 
 
-
+func _ready():
+	threshold = floor(rand_range(threshold-2,threshold+2));
 
 func spawn_bear():
 	spawned = true;
@@ -32,9 +32,6 @@ func spawn_bear():
 	return;
 
 func update_count():
-	if !spawned:
-		particles.set("emitting",true);
-		timer.start();
 	kill_count += 1;
 	if kill_count < threshold:
 		var fac = float(kill_count) / float(threshold)
@@ -44,6 +41,3 @@ func update_count():
 		spawn_bear();
 	return;
 
-
-func _on_Timer_timeout():
-	particles.set("emitting",false);
