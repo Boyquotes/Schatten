@@ -6,7 +6,8 @@ onready var player = $"/root/Main/Player";
 onready var pause_timer = $"PauseTimer"
 onready var game_rig_parent = $"Node";
 onready var bear_hit = $"Bear_hit";
-
+onready var tween = $"Tween";
+onready var particles = $"BossParticles";
 
 
 export var speed = 1;
@@ -22,10 +23,13 @@ var dist = 20;
 export var damage = 15;
 
 #damage to bear
-export var health_dec = 20;
+export var health_dec = 70;
 export var health = 100;
 
+var dead = false;
 
+func _ready():
+	print(particles)
 
 #
 ##wrap the swing functionality
@@ -37,38 +41,52 @@ func swing():
 
 ##makes sure the bear does not lean but looks and moves
 func _physics_process(delta):
-	var player_loc = player.get("translation");
-	look_at(player_loc, Vector3.UP)
-	set("rotation.x",0);
-	set("rotation.z",0)
-	if !swinging && (dist > swing_threshold):
-		move_and_collide(dir.normalized() * speed_fac,false);
+	if !dead:
+		var player_loc = player.get("translation");
+		look_at(player_loc, Vector3.UP)
+		set("rotation.x",0);
+		set("rotation.z",0)
+		if !swinging && (dist > swing_threshold):
+			move_and_collide(dir.normalized() * speed_fac,false);
 
 #
 ##this timer makes decisions for the bear periodically because on tick is too fast
 func _on_Timer_timeout():
-	dir = player.get_global_translation () - get_global_translation()
-	dir.y = 0;
-	speed_fac = rand_range(0.2,0.75) / 4;
-	dist = abs(dir.length());
-	if !swinging && (abs(dist) <= swing_threshold):
-		swing();
+	if !dead:
+		dir = player.get_global_translation () - get_global_translation()
+		dir.y = 0;
+		speed_fac = rand_range(0.2,0.75) / 4;
+		dist = abs(dir.length());
+		if !swinging && (abs(dist) <= swing_threshold):
+			swing();
 
 
 
 
 func _on_Area_body_entered(body):
-	if body.name == "Player" && swinging:
-		player.take_damage(damage);
+	if !dead:
+		if body.name == "Player" && swinging:
+			player.take_damage(damage);
 
 func take_damage()->void:
-	health -= health_dec;
-	print("Bearhit attempt")
-	game_rig_parent.set("visible",false);
-	bear_hit.set("visible",true);
-	bear_hit.get_child(1).play("BearHit");
-	yield(get_tree().create_timer(.5), "timeout");
-	bear_hit.set("visible",false);
-	game_rig_parent.set("visible",true);
+	if health > 0:
+		health -= health_dec;
+		game_rig_parent.set("visible",false);
+		bear_hit.set("visible",true);
+		bear_hit.get_child(1).play("BearHit");
+		yield(get_tree().create_timer(.5), "timeout");
+		bear_hit.set("visible",false);
+		game_rig_parent.set("visible",true);
 	if health <= 0:
-		queue_free();
+		dead = true;
+		#Bear death
+		boss_anim_tree.set("active",false);
+		particles.set("emitting",true);
+		var rot = get("rotation_degrees");
+		rot.x = 90;
+		tween.interpolate_property(self,"rotation_degrees",get("rotation_degrees"),rot,.3,Tween.TRANS_CUBIC,Tween.EASE_OUT);
+		tween.start();
+		yield(get_tree().create_timer(.5), "timeout");
+		tween.interpolate_property(self,"scale",Vector3(1,1,1),Vector3(.2,.2,.2),1.8,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT);
+		tween.start()
+		#queue_free();
