@@ -8,6 +8,7 @@ onready var game_rig_parent = $"Node";
 onready var bear_hit = $"Bear_hit";
 onready var tween = $"Tween";
 onready var particles = $"BossParticles";
+onready var bear_mesh = $"Node/Node/Skeleton/bear1"
 
 
 export var speed = 1;
@@ -77,9 +78,10 @@ func take_damage()->void:
 		yield(get_tree().create_timer(.5), "timeout");
 		bear_hit.set("visible",false);
 		game_rig_parent.set("visible",true);
-	if health <= 0:
+	if health <= 0 and !dead:
 		dead = true;
 		#Bear death
+		set("transform.y",0.2)
 		boss_anim_tree.set("active",false);
 		particles.set("emitting",true);
 		var rot = get("rotation_degrees");
@@ -87,6 +89,10 @@ func take_damage()->void:
 		tween.interpolate_property(self,"rotation_degrees",get("rotation_degrees"),rot,.3,Tween.TRANS_CUBIC,Tween.EASE_OUT);
 		tween.start();
 		yield(get_tree().create_timer(.5), "timeout");
-		tween.interpolate_property(self,"scale",Vector3(1,1,1),Vector3(.2,.2,.2),1.8,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT);
+		tween.interpolate_property(self,"scale",Vector3(1,1,1),Vector3(.4,.4,.4),2.2,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT);
 		tween.start()
+		yield(get_tree().create_timer(1.2), "timeout");
+		particles.set("emitting",false)
+		print(bear_mesh.get_surface_material(0).albedo_color);
+		bear_mesh.get_surface_material(0).albedo_color = Color(214.0/256.0,140.0/256.0,83.0/256.0,1.0);
 		#queue_free();
