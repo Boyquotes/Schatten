@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://art/Bear/Bear.tscn" type="PackedScene" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://art/TitleScreen/PressAnywhere.png" type="Texture" id=38]
 [ext_resource path="res://art/Bedroom/BedroomOther.glb" type="PackedScene" id=39]
 [ext_resource path="res://art/Bedroom/BedroomBake_albedo.png" type="Texture" id=40]
+[ext_resource path="res://sound/squeak.wav" type="AudioStream" id=41]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 1, 30 )
@@ -247,7 +248,6 @@ shape = SubResource( 12 )
 
 [node name="DeathPopup" type="Popup" parent="CanvasLayer"]
 pause_mode = 2
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 37 )
@@ -258,8 +258,14 @@ script = SubResource( 17 )
 
 [node name="Darken" type="TextureRect" parent="CanvasLayer/DeathPopup"]
 self_modulate = Color( 1, 1, 1, 0.47451 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 texture = ExtResource( 33 )
 
 [node name="DeathScreen" type="TextureRect" parent="CanvasLayer/DeathPopup"]
@@ -288,14 +294,21 @@ texture = ExtResource( 38 )
 
 [node name="PauseMenu" type="Popup" parent="CanvasLayer"]
 pause_mode = 2
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 21 )
 
 [node name="Darken" type="TextureRect" parent="CanvasLayer/PauseMenu"]
 self_modulate = Color( 1, 1, 1, 0.47451 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 texture = ExtResource( 33 )
 
 [node name="MenuBackground" type="TextureRect" parent="CanvasLayer/PauseMenu"]
@@ -413,7 +426,10 @@ shape = SubResource( 9 )
 [node name="Bed2" parent="." instance=ExtResource( 7 )]
 transform = Transform( -0.000805923, 0.000600261, -0.999999, 0.000352002, 1, 0.000599963, 1, -0.000351494, -0.000806145, 9.446, 1.54, -8.864 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Squeak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 autoplay = true
 
