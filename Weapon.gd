@@ -12,7 +12,7 @@ onready var swordTip = $"./SwordTip"
 onready var player = $"/root/Main/Player"
 onready var space_state = get_world().direct_space_state
 onready var areaColl = $"Area/Area@CollisionShape"
-onready var area = $"Area"
+onready var areaColl2 = $"Area2/AreaCollisionShape"
 onready var swing_duration = $"../../../../../AnimationPlayer".get_animation("SwordSwing").length
 
 var timer
@@ -101,9 +101,17 @@ func set_sword_area_position(pivot,tip):
 	areaColl.shape.extents.x =  1
 	areaColl.shape.extents.y = 1
 	areaColl.shape.extents.z = 1
+	areaColl2.global_rotation.z = 1
+	areaColl2.global_translation = pivot
+	areaColl2.shape.extents.x =  1
+	areaColl2.shape.extents.y = 1
+	areaColl2.shape.extents.z = 1
 
 	
 func _on_Area_body_entered(body):
+	hit_mob(body)
+	
+func hit_mob(body):
 	if (
 		(body.name.find("Mob") >= 0 || body.name.find("BearComposite"))
 		&& state == State.STATE_SWINGING 
@@ -112,7 +120,10 @@ func _on_Area_body_entered(body):
 		body.take_damage()
 		enemiesHit.append(body.name)
 
-
 func _on_swing_end():
 	enemiesHit = []
 	state = State.STATE_IDLE
+
+
+func _on_Area2_body_entered(body):
+	hit_mob(body)

@@ -5,7 +5,7 @@
 [ext_resource path="res://Weapon.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 5.587, 1.87, 0.77 )
+extents = Vector3( 0.517704, 0.877128, 0.77 )
 
 [sub_resource type="CubeMesh" id=2]
 
@@ -23,7 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83147, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.03232, 0 )
 
 [node name="Area" type="Area" parent="." index="3"]
-collision_layer = 2
+collision_layer = 32768
 collision_mask = 2
 
 [node name="Area@CollisionShape" type="CollisionShape" parent="Area" index="0"]
@@ -34,4 +34,17 @@ transform = Transform( 7.39319, 0, 0, 0, 2.45464, 0, 0, 0, 1.01241, 0, 0, 0 )
 visible = false
 mesh = SubResource( 2 )
 
+[node name="Area2" type="Area" parent="." index="4"]
+collision_layer = 32768
+collision_mask = 2
+
+[node name="AreaCollisionShape" type="CollisionShape" parent="Area2" index="0"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Area2" index="1"]
+transform = Transform( 7.39319, 0, 0, 0, 2.45464, 0, 0, 0, 1.01241, 0, 0, 0 )
+visible = false
+mesh = SubResource( 2 )
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Area2" to="." method="_on_Area2_body_entered"]
