@@ -11,6 +11,7 @@ onready var particles = $"BossParticles";
 onready var bear_mesh = $"Node/Node/Skeleton/bear1"
 
 
+
 export var speed = 1;
 var dir = Vector3(1,0,1);
 var swinging = false;
@@ -29,8 +30,6 @@ export var health = 100;
 
 var dead = false;
 
-func _ready():
-	print(particles)
 
 #
 ##wrap the swing functionality
@@ -95,4 +94,5 @@ func take_damage()->void:
 		particles.set("emitting",false)
 		print(bear_mesh.get_surface_material(0).albedo_color);
 		bear_mesh.get_surface_material(0).albedo_color = Color(214.0/256.0,140.0/256.0,83.0/256.0,1.0);
+		$"..".to_spawn = false;
 		#queue_free();
