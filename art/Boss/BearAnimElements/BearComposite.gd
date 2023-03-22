@@ -77,6 +77,7 @@ func take_damage()->void:
 		yield(get_tree().create_timer(.5), "timeout");
 		bear_hit.set("visible",false);
 		game_rig_parent.set("visible",true);
+		$"/root/Main/Squeak".play()
 	if health <= 0 and !dead:
 		dead = true;
 		#Bear death
