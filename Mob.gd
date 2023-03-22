@@ -12,6 +12,10 @@ var damage = 5
 
 var velocity = Vector3.ZERO
 
+
+func _ready():
+	$"/root/Main".mob_count += 1;
+
 func _physics_process(_delta):
 	
 	#var dir = (player.global_transform.origin - self.global_transform.origin).normalized()
@@ -30,8 +34,10 @@ func initialize(start_position, player_position):
 
 
 func _on_VisibilityNotifier_screen_exited():
+	$"/root/Main".dec_count();
 	queue_free()
 	
 func take_damage():
 	boss_spawn.update_count();
 	queue_free()
+	$"/root/Main".dec_count();

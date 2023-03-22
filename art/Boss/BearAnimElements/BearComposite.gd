@@ -25,7 +25,7 @@ var dist = 20;
 export var damage = 15;
 
 #damage to bear
-export var health_dec = 70;
+export var health_dec = 20;
 export var health = 100;
 
 var dead = false;

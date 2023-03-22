@@ -3,6 +3,9 @@ extends Node
 export(PackedScene) var mob_scene
 
 onready var to_spawn:bool = true
+onready var endpoint = preload("res://LevelEnd.tscn").instance()
+
+var mob_count = 1;
 
 func _ready():
 	randomize()
@@ -17,3 +20,12 @@ func _on_MobTimer_timeout():
 		mob.initialize(mob_spawn_location.translation, player_position)
 
 		add_child(mob)
+
+func dec_count():
+	mob_count -= 1;
+	if mob_count == 1 && !to_spawn:
+		#END GAME SEQUENCE
+		print("adding")
+		add_child(endpoint)
+		endpoint.set("translation",Vector3(2.8,-1.3,16.2))
+		endpoint.rotate_door();
