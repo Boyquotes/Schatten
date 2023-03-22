@@ -17,7 +17,8 @@ _global_script_class_icons={
 config/name="Schatten"
 config/description="In this game, your goal is to chase and kick out the creeps!
 "
-run/main_scene="res://TitleScreen.tscn"
+run/main_scene="res://SplashScreen.tscn"
+boot_splash/show_image=false
 config/icon="res://art/TitleScreen/Title Screen.jpg"
 
 [display]
