@@ -59,6 +59,7 @@ func _on_Timer_timeout():
 		dist = abs(dir.length());
 		if !swinging && (abs(dist) <= swing_threshold):
 			swing();
+		print("position for bear ", get("translation"))
 
 
 
@@ -97,3 +98,6 @@ func take_damage()->void:
 		bear_mesh.get_surface_material(0).albedo_color = Color(214.0/256.0,140.0/256.0,83.0/256.0,1.0);
 		$"..".to_spawn = false;
 		#queue_free();
+
+func _exit_tree():
+	print("Bear Despawn")

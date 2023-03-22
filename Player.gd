@@ -109,6 +109,7 @@ func _on_DashTimer_timeout():
 func _on_Area_body_entered(body):
 	if body.damage && can_damage:
 		take_damage(body.damage)
+		print(body.name)
 		body.queue_free()
 		$"/root/Main".dec_count()
 
