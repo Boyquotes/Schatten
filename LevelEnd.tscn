@@ -21,15 +21,17 @@ material/0 = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.803576, 0.595202, 0, -0.595202, 0.803576, -1.01442, 3.96477, 3.88362 )
-light_color = Color( 0.952941, 0.666667, 0.458824, 1 )
-spot_range = 6.90796
-spot_angle = 25.55
-
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 3 )
 
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.38481, 0 )
+light_color = Color( 0.921569, 0.686275, 0.054902, 1 )
+light_energy = 30.0
+spot_range = 27.739
+spot_angle = 5.75
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="end_game"]

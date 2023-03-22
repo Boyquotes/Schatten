@@ -25,7 +25,6 @@ func dec_count():
 	mob_count -= 1;
 	if mob_count == 1 && !to_spawn:
 		#END GAME SEQUENCE
-		print("adding")
 		add_child(endpoint)
 		endpoint.set("translation",Vector3(2.8,-1.3,16.2))
 		endpoint.rotate_door();
