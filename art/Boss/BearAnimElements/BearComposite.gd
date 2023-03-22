@@ -59,7 +59,6 @@ func _on_Timer_timeout():
 		dist = abs(dir.length());
 		if !swinging && (abs(dist) <= swing_threshold):
 			swing();
-		print("position for bear ", get("translation"))
 
 
 
@@ -100,4 +99,4 @@ func take_damage()->void:
 		#queue_free();
 
 func _exit_tree():
-	print("Bear Despawn")
+	pass

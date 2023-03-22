@@ -20,11 +20,17 @@ func _on_MobTimer_timeout():
 		mob.initialize(mob_spawn_location.translation, player_position)
 
 		add_child(mob)
+	elif mob_count == 1 && !to_spawn:
+		end()
 
 func dec_count():
 	mob_count -= 1;
 	if mob_count == 1 && !to_spawn:
 		#END GAME SEQUENCE
-		add_child(endpoint)
-		endpoint.set("translation",Vector3(2.8,-1.3,16.2))
-		endpoint.rotate_door();
+		end()
+
+func end():
+	add_child(endpoint)
+	endpoint.set("translation",Vector3(30.5,-1.3,0))
+	endpoint.rotate_door();
+	

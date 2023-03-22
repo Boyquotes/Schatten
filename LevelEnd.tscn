@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://LevelEnd.gd" type="Script" id=1]
+[ext_resource path="res://art/GUI/black.png" type="Texture" id=2]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 2, 4, 1 )
@@ -29,9 +30,24 @@ shape = SubResource( 3 )
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.38481, 0 )
 light_color = Color( 0.921569, 0.686275, 0.054902, 1 )
-light_energy = 30.0
-spot_range = 27.739
-spot_angle = 5.75
+light_energy = 2.0
+spot_range = 9.83287
+spot_angle = 41.715
 
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06046, 0, 1.72347 )
+
+[node name="Darken" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+texture = ExtResource( 2 )
+
 [connection signal="body_entered" from="Area" to="." method="end_game"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
