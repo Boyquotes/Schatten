@@ -44,9 +44,9 @@ func _ready():
 	print(UI)
 
 func _physics_process(delta):
-	movePlayer(delta,vel_override);
+	movePlayer(delta);
 	
-func movePlayer(delta,Vel=null):
+func movePlayer(delta):
 	# We create a local variable to store the input direction.
 	var direction = Vector3.ZERO
 	
@@ -89,8 +89,8 @@ func movePlayer(delta,Vel=null):
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 		velocity.y -= fall_acceleration * delta
-		if Vel != null:
-			velocity = Vel
+		if vel_override != null:
+			velocity = vel_override
 		velocity = move_and_slide(velocity, Vector3.UP)
 	else:
 		velocity = Vector3(0,0,0);
