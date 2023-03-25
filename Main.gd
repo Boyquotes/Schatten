@@ -3,7 +3,7 @@ extends Node
 export(PackedScene) var mob_scene
 
 onready var to_spawn:bool = true
-onready var endpoint = preload("res://LevelEnd.tscn").instance()
+onready var endpoint = preload("res://WallExit.tscn").instance()
 
 var mob_count = 1;
 
@@ -31,6 +31,6 @@ func dec_count():
 
 func end():
 	add_child(endpoint)
-	endpoint.set("translation",Vector3(30.5,-1.3,0))
+	endpoint.set("translation",Vector3(35,3,8))
 	endpoint.rotate_door();
 	

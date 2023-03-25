@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://LevelEnd.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=19]
+
+[sub_resource type="BoxShape" id=20]
+extents = Vector3( 5, 5, 5 )
+
+[node name="NewWall" type="Spatial"]
+transform = Transform( -4.37114e-08, 1, 0, -4.6403, -2.02834e-07, 0, 0, 0, 6.72604, 33.3685, 3, 8 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0.0340567, 0, 0 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 7.10543e-15, 1, 0, 0, 0, 1, 0.0340567, 0, -2.51529 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 0.425026, -2.51667e-08, 0, -2.51667e-08, 1.00077, 0, 0, 0, 0.328935, -0.536781, 0.00674438, -1.26148 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../..")
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 0.121635, 0.176529, 0.0220011, -0.0766415, -0.0711398, 0.994518, 0.1222, -0.0846193, 0.00336422, -0.300087, 2.19893, -1.18452 )
+light_energy = 6.283
+light_indirect_energy = 0.882
+shadow_enabled = true
+omni_range = 11.82
+omni_attenuation = 1.23114
+omni_shadow_detail = 0
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( -4.37114e-08, -0.215503, 0, 1, -9.41995e-09, 0, 0, 0, 0.148676, 0.646512, -33.3685, -1.18941 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.686087, 28.7908, -4.09142e-13, -0.400402 )
+shape = SubResource( 20 )
+
+[node name="Pivot" type="Spatial" parent="."]
+transform = Transform( 0.576788, -1.85329e-08, 0, -1.8533e-08, 1.00077, 0, 0, 0, 0.261837, 0.451264, 1.34777, -1.05547 )
+
+[node name="Door" type="MeshInstance" parent="Pivot"]
+transform = Transform( 1, -2.13163e-14, 0, 3.19744e-14, 1, 0, 0, 0, 1, 5.96046e-08, -1.33601, -0.763233 )
+mesh = SubResource( 19 )
+skeleton = NodePath("../../..")
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, -0.215503, 0, 1, -9.41995e-09, 0, 0, 0, 0.148676, 0.646511, -9.23572, -1.18941 )
+
+[connection signal="body_entered" from="Area" to="." method="end_game"]

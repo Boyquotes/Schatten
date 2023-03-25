@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var door = $"Door";
+onready var door = $"Pivot";
 onready var tween = $"Tween";
 onready var darken = $"Darken"
 var rotated:bool = false;
@@ -9,12 +9,12 @@ var rotated:bool = false;
 func rotate_door() -> void:
 	if !rotated:
 		rotated = true;
-		tween.interpolate_property(self,"rotation_degrees",Vector3(0,90,0),Vector3(0,0,0),.5,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT);
+		tween.interpolate_property(door,"rotation_degrees",Vector3(0,90,0),Vector3(0,0,0),.5,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT);
+		tween.interpolate_property(door,"translation",door.get("translation"),door.get("translation") + Vector3(0,0,.4),.5,Tween.TRANS_BOUNCE,Tween.EASE_IN_OUT);
 		tween.start();
 
 
 func end_game(body:Node):
-	print(body.name)
 	if body.name == "Player":
 		body.in_cutscene = true;
 		body.set("translation",$"Spatial".get_global_translation())
