@@ -41,3 +41,4 @@ func take_damage():
 	boss_spawn.update_count();
 	queue_free()
 	$"/root/Main".dec_count();
+	$"/root/Main/GhostDeath".play()

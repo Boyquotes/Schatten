@@ -132,6 +132,7 @@ func take_damage(damage:float):
 			health = 0
 			emit_signal("health_changed", 0)
 			print("you ded")
+			$"/root/Main/PlayerDeath".play()
 			$"/root/Main/CanvasLayer/DeathPopup"._deathPopup()
 		else:
 			emit_signal("health_changed", health)
