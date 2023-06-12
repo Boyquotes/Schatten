@@ -123,6 +123,7 @@ func _on_Area_body_entered(body):
 
 
 func take_damage(damage:float):
+		$"/root/Main/CameraPivot/Camera".apply_noise_shake()
 		mat.set("shader_param/tint", 3.0);
 		DmgTween.interpolate_property(mat,"shader_param/transparency",1.0,0.0,.5,Tween.TRANS_BOUNCE,Tween.EASE_OUT);
 		DmgTween.start();

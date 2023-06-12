@@ -1,13 +1,25 @@
 extends Camera
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var NOISE_SHAKE_SPEED: float = 70.0
 
+export var NOISE_SHAKE_STRENGTH: float = 0.40
 
-# Called when the node enters the scene tree for the first time.
-# func _ready():
+export var SHAKE_DECAY:float = 15.0
+
+onready var rand =  RandomNumberGenerator.new()
+onready var noise = OpenSimplexNoise.new()
+
+var noise_i: float = 0.0
+var shake_strength: float = 0.0
+	
+func _ready() -> void:
+	rand.randomize()
+	noise.seed = rand.randi()
+	noise.period = 2
+
+func apply_noise_shake() -> void:
+	shake_strength = NOISE_SHAKE_STRENGTH
 	
 func _physics_process(_delta):
 	var position = get_viewport().get_mouse_position()
@@ -30,7 +42,16 @@ func _physics_process(_delta):
 		var target = result.position
 		target.y = player.get_global_translation().y
 		player.look_at(target, Vector3.UP)
+		
+	shake_strength = lerp(shake_strength,0,SHAKE_DECAY * _delta)
+	var off:Vector2 = get_noise_offset(_delta)
+	h_offset = off[0]
+	v_offset = off[1]
+	
+	
+func get_noise_offset(delta:float) ->Vector2:
+	noise_i += delta * NOISE_SHAKE_SPEED
+	return Vector2(noise.get_noise_2d(1,noise_i) * shake_strength,noise.get_noise_2d(100,noise_i) * shake_strength )
+	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
